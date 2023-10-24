@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://ckij8dukvmh82"]
+
+[ext_resource type="Material" uid="uid://ck5yy6bnnfhoe" path="res://test_ground.tres" id="1_mmuol"]
+[ext_resource type="PackedScene" uid="uid://buukchwddsq16" path="res://player_tank.tscn" id="2_eqnba"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b4fk2"]
+sky_top_color = Color(0.352941, 0.745098, 0.964706, 1)
+sky_horizon_color = Color(0.638235, 0.728525, 0.774426, 1)
+ground_horizon_color = Color(0.638235, 0.728525, 0.774426, 1)
+
+[sub_resource type="Sky" id="Sky_3scxv"]
+sky_material = SubResource("ProceduralSkyMaterial_b4fk2")
+
+[sub_resource type="Environment" id="Environment_kury7"]
+background_mode = 2
+sky = SubResource("Sky_3scxv")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_aj7l6"]
+size = Vector3(10, 0.1, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0qeht"]
+size = Vector3(10, 0.1, 10)
+
+[node name="Level1" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_kury7")
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+material_override = ExtResource("1_mmuol")
+mesh = SubResource("BoxMesh_aj7l6")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
+shape = SubResource("BoxShape3D_0qeht")
+
+[node name="PlayerTank" parent="." instance=ExtResource("2_eqnba")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.38488, 3.68043, 1.1244)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.611527, 0.159098, -0.775063, 0, 0.979575, 0.201079, 0.791224, 0.122965, -0.599037, -0.459754, 6.39808, 0)

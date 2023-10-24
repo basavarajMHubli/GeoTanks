@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://efslj53ftobf"]
+
+[ext_resource type="Texture2D" uid="uid://dukp1kgmwmjsq" path="res://assets/player_tank_color.png" id="1_64h64"]
+
+[resource]
+albedo_texture = ExtResource("1_64h64")
