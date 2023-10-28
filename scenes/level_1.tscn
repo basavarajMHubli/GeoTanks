@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://ckij8dukvmh82"]
+[gd_scene load_steps=9 format=3 uid="uid://ckij8dukvmh82"]
 
 [ext_resource type="Material" uid="uid://ck5yy6bnnfhoe" path="res://environment/test_ground.tres" id="1_v08iv"]
 [ext_resource type="PackedScene" uid="uid://buukchwddsq16" path="res://player_tank/player_tank.tscn" id="2_eqnba"]
+[ext_resource type="PackedScene" uid="uid://bi00ua5nemag2" path="res://enemies/enemy_tank.tscn" id="3_g4lg8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b4fk2"]
 sky_top_color = Color(0.352941, 0.745098, 0.964706, 1)
@@ -43,3 +44,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.38488, 3.68043, 1.1244)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.611527, 0.159098, -0.775063, 0, 0.979575, 0.201079, 0.791224, 0.122965, -0.599037, -0.459754, 6.39808, 0)
+
+[node name="obstacle_tmp" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.09317, 1.71651, 0)
+size = Vector3(2, 2, 2)
+
+[node name="EnemyTank" parent="." instance=ExtResource("3_g4lg8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.55706, 3.9617, -10.8364)

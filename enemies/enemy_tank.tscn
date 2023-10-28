@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bi00ua5nemag2"]
+
+[ext_resource type="Material" uid="uid://bjwcrwq8e01pp" path="res://enemies/M_EnemyTank.tres" id="2_48gq8"]
+[ext_resource type="ArrayMesh" uid="uid://cskfsd56xm5dj" path="res://enemies/SM_EnemyBase.obj" id="3_2iten"]
+[ext_resource type="ArrayMesh" uid="uid://ciwgo0u0nbe2f" path="res://enemies/SM_EnemyTurret.obj" id="5_3mqte"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_itc2q"]
+radius = 1.2568
+
+[node name="EnemyTank" type="CharacterBody3D"]
+
+[node name="base" type="MeshInstance3D" parent="."]
+material_override = ExtResource("2_48gq8")
+mesh = ExtResource("3_2iten")
+
+[node name="turret" type="MeshInstance3D" parent="."]
+material_override = ExtResource("2_48gq8")
+mesh = ExtResource("5_3mqte")
+
+[node name="FirePoint" type="Node3D" parent="turret"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.237448, 0)
+shape = SubResource("SphereShape3D_itc2q")
