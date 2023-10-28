@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://ckij8dukvmh82"]
 
-[ext_resource type="Material" uid="uid://ck5yy6bnnfhoe" path="res://test_ground.tres" id="1_mmuol"]
-[ext_resource type="PackedScene" uid="uid://buukchwddsq16" path="res://player_tank.tscn" id="2_eqnba"]
+[ext_resource type="Material" uid="uid://ck5yy6bnnfhoe" path="res://environment/test_ground.tres" id="1_v08iv"]
+[ext_resource type="PackedScene" uid="uid://buukchwddsq16" path="res://player_tank/player_tank.tscn" id="2_eqnba"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b4fk2"]
 sky_top_color = Color(0.352941, 0.745098, 0.964706, 1)
@@ -30,7 +30,7 @@ environment = SubResource("Environment_kury7")
 
 [node name="Ground" type="MeshInstance3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
-material_override = ExtResource("1_mmuol")
+material_override = ExtResource("1_v08iv")
 mesh = SubResource("BoxMesh_aj7l6")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Ground"]

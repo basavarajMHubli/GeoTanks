@@ -5,7 +5,7 @@ extends CharacterBody3D
 @export var fall_acceleration := 25
 
 var target_velocity := Vector3.ZERO
-var shell_scene := preload("res://shell.tscn")
+var shell_scene := preload("res://shells/shell.tscn")
 
 const RAY_LENGTH := 2000
 

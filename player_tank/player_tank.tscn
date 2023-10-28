@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://buukchwddsq16"]
 
-[ext_resource type="Script" path="res://scripts/player_tank.gd" id="1_lv3pb"]
-[ext_resource type="ArrayMesh" uid="uid://b58buti8cprjb" path="res://assets/SM_PlayerTurret.obj" id="2_simda"]
-[ext_resource type="Material" uid="uid://efslj53ftobf" path="res://assets/player_tank.tres" id="2_vgbyp"]
-[ext_resource type="ArrayMesh" uid="uid://dpc2f1xq5gwau" path="res://assets/SM_PlayerBase.obj" id="3_wcxlb"]
+[ext_resource type="Script" path="res://player_tank/player_tank.gd" id="1_lv3pb"]
+[ext_resource type="ArrayMesh" uid="uid://b58buti8cprjb" path="res://player_tank/SM_PlayerTurret.obj" id="2_simda"]
+[ext_resource type="Material" uid="uid://efslj53ftobf" path="res://player_tank/player_tank.tres" id="2_vgbyp"]
+[ext_resource type="ArrayMesh" uid="uid://dpc2f1xq5gwau" path="res://player_tank/SM_PlayerBase.obj" id="3_wcxlb"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_itc2q"]
 radius = 1.2568

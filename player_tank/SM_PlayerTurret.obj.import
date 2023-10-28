@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b58buti8cprjb"
+path="res://.godot/imported/SM_PlayerTurret.obj-e4f9f87f17fbfee439a35a93deec4180.mesh"
+
+[deps]
+
+files=["res://.godot/imported/SM_PlayerTurret.obj-e4f9f87f17fbfee439a35a93deec4180.mesh"]
+
+source_file="res://player_tank/SM_PlayerTurret.obj"
+dest_files=["res://.godot/imported/SM_PlayerTurret.obj-e4f9f87f17fbfee439a35a93deec4180.mesh", "res://.godot/imported/SM_PlayerTurret.obj-e4f9f87f17fbfee439a35a93deec4180.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
