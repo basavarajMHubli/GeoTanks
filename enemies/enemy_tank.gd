@@ -3,7 +3,17 @@ extends CharacterBody3D
 @onready var nav_agent = $NavigationAgent3D
 
 @export var move_speed = 1
+@export var fire_delay = 3.0
 
+var fire_timer = Timer.new()
+var shell_scene = preload("res://shells/shell.tscn")
+
+func _ready():
+	# Initialize timer for firing shell
+	add_child(fire_timer)
+	fire_timer.wait_time = fire_delay
+	fire_timer.connect("timeout", _on_fire_timer_timeout)
+	fire_timer.start()
 
 func _physics_process(delta):
 	# FIXME: target_desired_distance is not working in v4.1
@@ -28,3 +38,11 @@ func update_target_location(target_loc):
 func _on_navigation_agent_3d_velocity_computed(safe_velocity):
 	velocity = velocity.move_toward(safe_velocity, 0.25)
 	move_and_slide()
+
+
+func _on_fire_timer_timeout():
+	print("Enemy firing")
+	var shell := shell_scene.instantiate()
+	shell.position = $turret/FirePoint.global_position
+	shell.rotation = $turret/FirePoint.global_rotation
+	owner.add_child(shell)
