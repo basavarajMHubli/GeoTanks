@@ -1,7 +1,7 @@
 extends Node3D
 
 var SHELL_SPEED = 20
-var SHELL_DAMAGE = 15
+var SHELL_DAMAGE = 100
 
 const KILL_TIMER = 1
 var timer = 0

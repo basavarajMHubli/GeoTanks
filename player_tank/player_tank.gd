@@ -3,11 +3,19 @@ extends CharacterBody3D
 @export var move_speed := 16
 @export var turn_speed := 2
 @export var fall_acceleration := 25
+@export var max_health = 100
+@export var cur_health = 0
 
 var target_velocity := Vector3.ZERO
 var shell_scene := preload("res://shells/shell.tscn")
 
 const RAY_LENGTH := 2000
+
+
+func _ready():
+	# Init health
+	cur_health = max_health
+	
 
 func _physics_process(delta: float):
 	var direction := Vector3.ZERO
@@ -64,3 +72,7 @@ func rotate_turret():
 		var look_pos = result.position
 		look_pos.y = $turret.global_position.y
 		$turret.look_at(look_pos)
+
+
+func shell_hit(damage_value, hit_point):
+	printt("Player:", damage_value, hit_point)

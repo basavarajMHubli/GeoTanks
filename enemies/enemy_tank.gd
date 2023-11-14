@@ -4,6 +4,8 @@ extends CharacterBody3D
 
 @export var move_speed = 1
 @export var fire_delay = 3.0
+@export var max_health = 100
+@export var cur_health = 0
 
 var fire_timer = Timer.new()
 var shell_scene = preload("res://shells/shell.tscn")
@@ -14,6 +16,9 @@ func _ready():
 	fire_timer.wait_time = fire_delay
 	fire_timer.connect("timeout", _on_fire_timer_timeout)
 	fire_timer.start()
+	
+	# Init health
+	cur_health = max_health
 
 func _physics_process(delta):
 	# FIXME: target_desired_distance is not working in v4.1
@@ -46,3 +51,11 @@ func _on_fire_timer_timeout():
 	shell.position = $turret/FirePoint.global_position
 	shell.rotation = $turret/FirePoint.global_rotation
 	owner.add_child(shell)
+	
+
+func shell_hit(damage_value, hit_point):
+	printt("Enemy:", damage_value, hit_point)
+	cur_health -= damage_value
+	if cur_health <= 0:
+		printt("queue_free", self)
+		queue_free()
