@@ -11,10 +11,13 @@ var shell_scene := preload("res://shells/shell.tscn")
 
 const RAY_LENGTH := 2000
 
+@onready var health_bar = $StatsSubViewport/HealthBar
+
 
 func _ready():
 	# Init health
 	cur_health = max_health
+	health_bar.value = cur_health
 	
 
 func _physics_process(delta: float):
@@ -43,7 +46,7 @@ func _physics_process(delta: float):
 	move_and_slide()
 
 
-func _process(delta: float):
+func _process(_delta: float):
 	if Input.is_action_just_pressed("fire"):
 		fire_shell()
 
@@ -75,4 +78,15 @@ func rotate_turret():
 
 
 func shell_hit(damage_value, hit_point):
-	printt("Player:", damage_value, hit_point)
+	printt("Player hit:", damage_value, hit_point)
+	cur_health -= damage_value
+	health_bar.value = cur_health
+	
+	if cur_health <= 0:
+		player_die()
+
+
+func player_die():
+	print("Player died")
+	set_process(false)
+	set_physics_process(false)

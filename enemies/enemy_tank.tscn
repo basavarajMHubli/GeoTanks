@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bi00ua5nemag2"]
+[gd_scene load_steps=8 format=3 uid="uid://bi00ua5nemag2"]
 
 [ext_resource type="Script" path="res://enemies/enemy_tank.gd" id="1_h4bce"]
 [ext_resource type="Material" uid="uid://bjwcrwq8e01pp" path="res://enemies/M_EnemyTank.tres" id="2_48gq8"]
@@ -6,6 +6,12 @@
 [ext_resource type="ArrayMesh" uid="uid://ciwgo0u0nbe2f" path="res://enemies/SM_EnemyTurret.obj" id="5_3mqte"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_bvd31"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_awgmf"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_0axxc"]
+viewport_path = NodePath("StatsSubViewport")
 
 [node name="EnemyTank" type="CharacterBody3D" groups=["enemies"]]
 script = ExtResource("1_h4bce")
@@ -22,12 +28,38 @@ mesh = ExtResource("5_3mqte")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.480776, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.2, 0)
 shape = SubResource("SphereShape3D_bvd31")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 target_desired_distance = 10.0
+path_max_distance = 10.01
 avoidance_enabled = true
 debug_enabled = true
+
+[node name="StatsSubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(128, 128)
+
+[node name="ProgressBar" type="ProgressBar" parent="StatsSubViewport"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.5
+offset_top = -13.5
+offset_right = 76.5
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_awgmf")
+value = 50.0
+show_percentage = false
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_0axxc")
 
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]

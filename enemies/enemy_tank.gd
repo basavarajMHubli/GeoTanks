@@ -1,7 +1,5 @@
 extends CharacterBody3D
 
-@onready var nav_agent = $NavigationAgent3D
-
 @export var move_speed = 1
 @export var fire_delay = 3.0
 @export var max_health = 100
@@ -9,6 +7,9 @@ extends CharacterBody3D
 
 var fire_timer = Timer.new()
 var shell_scene = preload("res://shells/shell.tscn")
+
+@onready var nav_agent = $NavigationAgent3D
+@onready var health_bar = $StatsSubViewport/ProgressBar
 
 func _ready():
 	# Initialize timer for firing shell
@@ -19,8 +20,10 @@ func _ready():
 	
 	# Init health
 	cur_health = max_health
+	health_bar.value = cur_health
+	
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	# FIXME: target_desired_distance is not working in v4.1
 	if not nav_agent.is_target_reached():
 		move_towards_player()
@@ -32,7 +35,9 @@ func move_towards_player():
 	var next_dir = next_loc - curr_loc
 	var new_velocity = next_dir.normalized() * move_speed
 	
-	look_at(next_loc, Vector3.UP)
+	if not curr_loc.is_equal_approx(next_loc):
+		look_at(next_loc, Vector3.UP)
+
 	nav_agent.set_velocity(new_velocity)
 
 
@@ -55,7 +60,9 @@ func _on_fire_timer_timeout():
 
 func shell_hit(damage_value, hit_point):
 	printt("Enemy:", damage_value, hit_point)
+	
 	cur_health -= damage_value
+	health_bar.value = cur_health
 	if cur_health <= 0:
 		printt("queue_free", self)
 		queue_free()
