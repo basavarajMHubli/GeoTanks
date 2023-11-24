@@ -74,7 +74,6 @@ func rotate_turret():
 	
 	var result := space_state.intersect_ray(query)
 	if not result.is_empty():
-#		print(result)
 		var look_pos = result.position
 		look_pos.y = $turret.global_position.y
 		$turret.look_at(look_pos)
@@ -90,7 +89,7 @@ func shell_hit(damage_value, hit_point):
 
 
 func player_die():
-	print("Player died")
+	print("Player: died")
 	set_process(false)
 	set_physics_process(false)
 

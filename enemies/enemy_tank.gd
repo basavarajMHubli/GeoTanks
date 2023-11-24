@@ -51,7 +51,7 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity):
 
 
 func _on_fire_timer_timeout():
-	print("Enemy firing")
+	print("Enemy: firing")
 	var shell := shell_scene.instantiate()
 	shell.position = $turret/FirePoint.global_position
 	shell.rotation = $turret/FirePoint.global_rotation

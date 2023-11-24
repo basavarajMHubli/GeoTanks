@@ -23,7 +23,7 @@ func _physics_process(delta):
 
 
 func collided(body):
-	print("Collided with " + body.name)
+	print("Shell: collided with " + body.name)
 	if hit_someting == false:
 		if body.has_method("shell_hit"):
 			body.shell_hit(SHELL_DAMAGE, global_transform)
