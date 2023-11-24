@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://buukchwddsq16"]
+[gd_scene load_steps=9 format=3 uid="uid://buukchwddsq16"]
 
 [ext_resource type="Script" path="res://player_tank/player_tank.gd" id="1_lv3pb"]
 [ext_resource type="ArrayMesh" uid="uid://b58buti8cprjb" path="res://player_tank/SM_PlayerTurret.obj" id="2_simda"]
@@ -13,6 +13,9 @@ bg_color = Color(0, 1, 0, 1)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ruvb5"]
 viewport_path = NodePath("StatsSubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hr6kr"]
+size = Vector3(5, 1, 5)
 
 [node name="PlayerTank" type="CharacterBody3D"]
 script = ExtResource("1_lv3pb")
@@ -65,3 +68,8 @@ show_percentage = false
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 texture = SubResource("ViewportTexture_ruvb5")
+
+[node name="InteractorArea3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractorArea3D"]
+shape = SubResource("BoxShape3D_hr6kr")
