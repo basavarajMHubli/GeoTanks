@@ -5,6 +5,7 @@ extends CharacterBody3D
 @export var fall_acceleration := 25
 @export var max_health = 100
 @export var cur_health = 0
+@export var shell_count = 0
 
 var target_velocity := Vector3.ZERO
 var shell_scene := preload("res://shells/shell.tscn")
@@ -52,10 +53,14 @@ func _process(_delta: float):
 
 
 func fire_shell():
-	var shell := shell_scene.instantiate()
-	shell.position = $turret/FirePoint.global_position
-	shell.rotation = $turret/FirePoint.global_rotation
-	owner.add_child(shell)
+	if shell_count:
+		shell_count -= 1
+		var shell := shell_scene.instantiate()
+		shell.position = $turret/FirePoint.global_position
+		shell.rotation = $turret/FirePoint.global_rotation
+		owner.add_child(shell)
+	
+	print("Player: shell count " + str(shell_count))
 
 
 func rotate_turret():
@@ -98,3 +103,8 @@ func health_update(gain):
 	
 	health_bar.value = cur_health
 	print("Player: Health update to " + str(cur_health))
+
+
+func shell_count_update(gain):
+	shell_count += gain
+	print("Player: shell count updated to " + str(shell_count))
