@@ -8,7 +8,6 @@ extends CharacterBody3D
 
 var target_velocity := Vector3.ZERO
 var shell_scene := preload("res://shells/shell.tscn")
-var interact_status := false
 
 const RAY_LENGTH := 2000
 
@@ -50,8 +49,6 @@ func _physics_process(delta: float):
 func _process(_delta: float):
 	if Input.is_action_just_pressed("fire"):
 		fire_shell()
-	if Input.is_action_just_pressed("interact") and interact_status:
-		process_interactions()
 
 
 func fire_shell():
@@ -79,8 +76,8 @@ func rotate_turret():
 		$turret.look_at(look_pos)
 
 
-func shell_hit(damage_value, hit_point):
-	printt("Player hit:", damage_value, hit_point)
+func shell_hit(damage_value, _hit_point):
+	print("Player: took damage " + str(damage_value))
 	cur_health -= damage_value
 	health_bar.value = cur_health
 	
@@ -94,23 +91,10 @@ func player_die():
 	set_physics_process(false)
 
 
-func set_interactive(status: bool):
-	interact_status = status
-
-
 func health_update(gain):
 	cur_health += gain
 	if cur_health > 100:
 		cur_health = 100
 	
 	health_bar.value = cur_health
-
-
-func process_interactions():
-	print("Player: processing interactions")
-	
-	var areas = $InteractorArea3D.get_overlapping_areas()
-	for area in areas:
-		if area.is_in_group("health_crate"):
-			health_update(area.get_health_gain())
-			area.queue_free()
+	print("Player: Health update to " + str(cur_health))

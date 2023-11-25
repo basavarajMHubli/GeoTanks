@@ -2,20 +2,29 @@ extends Area3D
 
 @export var health_gain := 25
 
+var player_interactor: Node3D = null
+
 @onready var help_text = $HelpText
 
 
 func _on_body_entered(body):
 	if body.is_in_group("player"):
 		help_text.visible = true		
-		body.set_interactive(true)
+		player_interactor = body
 
 
 func _on_body_exited(body):
 	if body.is_in_group("player"):
 		help_text.visible = false
-		body.set_interactive(false)
+		player_interactor = null
 
 
-func get_health_gain():
-	return health_gain
+func _input(event):
+	if player_interactor and event.is_action_pressed("interact"):
+		print("HealthCrate: Interacting")
+		player_interactor.health_update(health_gain)
+		destroy_health_crate()
+
+
+func destroy_health_crate():
+	queue_free()
