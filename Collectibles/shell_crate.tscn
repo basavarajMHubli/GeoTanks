@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://copk8kj3vfvb5"]
+[gd_scene load_steps=6 format=3 uid="uid://copk8kj3vfvb5"]
 
 [ext_resource type="Script" path="res://Collectibles/shell_create.gd" id="1_x271n"]
+[ext_resource type="PackedScene" uid="uid://4ax3b8ne61ia" path="res://objectives/objective.tscn" id="2_igevp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3b2r7"]
 size = Vector3(3, 1, 3)
@@ -33,6 +34,13 @@ visible = false
 billboard = 1
 text = "E to collect"
 font_size = 128
+
+[node name="Objective" parent="." instance=ExtResource("2_igevp")]
+obj = {
+"desc": "Collect shell crate",
+"id": 1,
+"name": "Shells!"
+}
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
