@@ -10,7 +10,7 @@ func _ready():
 func register(obj):
 	print("ObjectiveManager: registering ", obj["id"])
 	objectives.append(obj)
-	print(obj)
+	UIManager.display_obj(obj["name"])
 
 
 func complete(obj_id):
@@ -19,6 +19,7 @@ func complete(obj_id):
 	for obj in objectives:
 		if obj["id"] == obj_id:
 			objectives.erase(obj)
+			UIManager.remove_obj(obj["name"])
 
 	if objectives.is_empty():
 		print("ObjectiveManager: All objective completed")

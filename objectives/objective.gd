@@ -9,7 +9,6 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	connect("obj_complete", Callable(ObjectiveManager, "complete"))	
 	ObjectiveManager.register(obj)
 
 
