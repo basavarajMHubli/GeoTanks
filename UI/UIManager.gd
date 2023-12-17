@@ -1,6 +1,7 @@
 extends Control
 
 @onready var obj_v_box_container = $CanvasLayer/ObjectiveVBoxContainer
+@onready var canvas_layer = $CanvasLayer
 
 
 func display_obj(obj_text):
@@ -17,3 +18,6 @@ func remove_obj(obj_text):
 			if child.text == obj_text:
 				child.modulate = Color.GRAY
 	
+
+func ui_visibility(state: bool):
+	canvas_layer.visible = state
