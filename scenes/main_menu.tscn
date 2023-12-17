@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhwt3u5vvdvtn"]
+
+[ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_bfid2"]
+
+[node name="MainMenu" type="Node3D"]
+script = ExtResource("1_bfid2")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -160.0
+offset_top = 160.0
+offset_right = 193.0
+offset_bottom = 248.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 64
+text = "GEO TANKS"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -513.0
+offset_top = 42.0
+offset_right = -313.0
+offset_bottom = 192.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="PlayButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Play"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Quit"
+
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
