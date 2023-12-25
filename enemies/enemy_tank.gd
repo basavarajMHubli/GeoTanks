@@ -36,6 +36,8 @@ func move_towards_player():
 	var new_velocity = next_dir.normalized() * move_speed
 	
 	if not curr_loc.is_equal_approx(next_loc):
+		# TODO: Re-check
+		next_loc.y = curr_loc.y
 		look_at(next_loc, Vector3.UP)
 
 	nav_agent.set_velocity(new_velocity)
