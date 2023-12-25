@@ -19,5 +19,11 @@ func remove_obj(obj_text):
 				child.modulate = Color.GRAY
 	
 
+func clear_all_ojectives():
+	print("UIManager: Clearing all objectives")
+	for child in obj_v_box_container.get_children():
+		obj_v_box_container.remove_child(child)
+		child.queue_free() 
+
 func ui_visibility(state: bool):
 	canvas_layer.visible = state

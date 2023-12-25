@@ -44,8 +44,9 @@ func _process(_delta):
 
 func _on_objective_check_timer_timeout():
 	if not obj_remaining:
+		print("Level-1 No objectives remaining")		
 		objective_check_timer.stop()
-		print("Level-1 No objectives remaining")
+		UIManager.clear_all_ojectives()
 		SceneManager.load_scene(level2_path)
 		return
 
