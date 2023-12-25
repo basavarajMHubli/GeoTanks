@@ -88,3 +88,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 1, 16)
 
 [node name="ShellCrate" parent="NavigationRegion3D" instance=ExtResource("6_a4pc4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 13)
+
+[node name="ObjectiveCheckTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="ObjectiveCheckTimer" to="." method="_on_objective_check_timer_timeout"]

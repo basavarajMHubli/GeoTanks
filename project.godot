@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 SceneManager="*res://scene_manager/scene_manager.gd"
-ObjectiveManager="*res://objectives/ObjectiveManager.gd"
 UIManager="*res://UI/UIManager.tscn"
 
 [filesystem]
