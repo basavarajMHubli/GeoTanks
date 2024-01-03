@@ -3,11 +3,23 @@ extends CharacterBody3D
 @export var move_speed := 16
 @export var turn_speed := 2
 @export var fall_acceleration := 25
+@export var max_health = 100
+@export var cur_health = 0
+@export var shell_count = 0
 
 var target_velocity := Vector3.ZERO
-var shell_scene := preload("res://shell.tscn")
+var shell_scene := preload("res://shells/shell.tscn")
 
 const RAY_LENGTH := 2000
+
+@onready var health_bar = $StatsSubViewport/HealthBar
+
+
+func _ready():
+	# Init health
+	cur_health = max_health
+	health_bar.value = cur_health
+	
 
 func _physics_process(delta: float):
 	var direction := Vector3.ZERO
@@ -35,16 +47,20 @@ func _physics_process(delta: float):
 	move_and_slide()
 
 
-func _process(delta: float):
+func _process(_delta: float):
 	if Input.is_action_just_pressed("fire"):
 		fire_shell()
 
 
 func fire_shell():
-	var shell := shell_scene.instantiate()
-	shell.position = $turret/FirePoint.global_position
-	shell.rotation = $turret/FirePoint.global_rotation
-	owner.add_child(shell)
+	if shell_count:
+		shell_count -= 1
+		var shell := shell_scene.instantiate()
+		shell.position = $turret/FirePoint.global_position
+		shell.rotation = $turret/FirePoint.global_rotation
+		owner.add_child(shell)
+	
+	print("Player: shell count " + str(shell_count))
 
 
 func rotate_turret():
@@ -60,7 +76,35 @@ func rotate_turret():
 	
 	var result := space_state.intersect_ray(query)
 	if not result.is_empty():
-#		print(result)
 		var look_pos = result.position
 		look_pos.y = $turret.global_position.y
 		$turret.look_at(look_pos)
+
+
+func shell_hit(damage_value, _hit_point):
+	print("Player: took damage " + str(damage_value))
+	cur_health -= damage_value
+	health_bar.value = cur_health
+	
+	if cur_health <= 0:
+		player_die()
+
+
+func player_die():
+	print("Player: died")
+	set_process(false)
+	set_physics_process(false)
+
+
+func health_update(gain):
+	cur_health += gain
+	if cur_health > 100:
+		cur_health = 100
+	
+	health_bar.value = cur_health
+	print("Player: Health update to " + str(cur_health))
+
+
+func shell_count_update(gain):
+	shell_count += gain
+	print("Player: shell count updated to " + str(shell_count))

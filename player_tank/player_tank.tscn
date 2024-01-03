@@ -1,0 +1,75 @@
+[gd_scene load_steps=9 format=3 uid="uid://buukchwddsq16"]
+
+[ext_resource type="Script" path="res://player_tank/player_tank.gd" id="1_lv3pb"]
+[ext_resource type="ArrayMesh" uid="uid://b58buti8cprjb" path="res://player_tank/SM_PlayerTurret.obj" id="2_simda"]
+[ext_resource type="Material" uid="uid://efslj53ftobf" path="res://player_tank/player_tank.tres" id="2_vgbyp"]
+[ext_resource type="ArrayMesh" uid="uid://dpc2f1xq5gwau" path="res://player_tank/SM_PlayerBase.obj" id="3_wcxlb"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_itc2q"]
+radius = 1.2568
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_38jaf"]
+bg_color = Color(0, 1, 0, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ruvb5"]
+viewport_path = NodePath("StatsSubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hr6kr"]
+size = Vector3(5, 1, 5)
+
+[node name="PlayerTank" type="CharacterBody3D"]
+script = ExtResource("1_lv3pb")
+
+[node name="base" type="MeshInstance3D" parent="."]
+material_override = ExtResource("2_vgbyp")
+mesh = ExtResource("3_wcxlb")
+
+[node name="turret" type="MeshInstance3D" parent="."]
+material_override = ExtResource("2_vgbyp")
+mesh = ExtResource("2_simda")
+
+[node name="FirePoint" type="Node3D" parent="turret"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+shape = SubResource("SphereShape3D_itc2q")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 0, 0)
+spring_length = 30.0
+margin = 0.5
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 1, -5.96046e-08, 0, 2.98023e-08, 1, 0, -0.0420952, 7.97016)
+fov = 35.0
+
+[node name="StatsSubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(128, 128)
+
+[node name="HealthBar" type="ProgressBar" parent="StatsSubViewport"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -74.0
+offset_top = -13.5
+offset_right = 74.0
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.952941, 0.952941, 0.952941, 1)
+theme_override_styles/fill = SubResource("StyleBoxFlat_38jaf")
+value = 50.0
+show_percentage = false
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+texture = SubResource("ViewportTexture_ruvb5")
+
+[node name="InteractorArea3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractorArea3D"]
+shape = SubResource("BoxShape3D_hr6kr")

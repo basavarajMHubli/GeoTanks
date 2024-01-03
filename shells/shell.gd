@@ -1,7 +1,7 @@
 extends Node3D
 
 var SHELL_SPEED = 20
-var SHELL_DAMAGE = 15
+var SHELL_DAMAGE = 50
 
 const KILL_TIMER = 1
 var timer = 0
@@ -23,7 +23,7 @@ func _physics_process(delta):
 
 
 func collided(body):
-	print("Collided with " + body.name)
+	print("Shell: collided with " + body.name)
 	if hit_someting == false:
 		if body.has_method("shell_hit"):
 			body.shell_hit(SHELL_DAMAGE, global_transform)
