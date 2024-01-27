@@ -58,7 +58,7 @@ func fire_shell():
 		var shell := shell_scene.instantiate()
 		shell.position = $turret/FirePoint.global_position
 		shell.rotation = $turret/FirePoint.global_rotation
-		owner.add_child(shell)
+		get_parent().add_child(shell)
 	
 	print("Player: shell count " + str(shell_count))
 

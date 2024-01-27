@@ -57,8 +57,8 @@ func _on_fire_timer_timeout():
 	var shell := shell_scene.instantiate()
 	shell.position = $turret/FirePoint.global_position
 	shell.rotation = $turret/FirePoint.global_rotation
-	owner.add_child(shell)
-	
+	get_parent().add_child(shell)
+
 
 func shell_hit(damage_value, hit_point):
 	printt("Enemy:", damage_value, hit_point)
