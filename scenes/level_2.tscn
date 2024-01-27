@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://coxnlx6injpmt"]
+[gd_scene load_steps=16 format=3 uid="uid://coxnlx6injpmt"]
 
 [ext_resource type="Script" path="res://scenes/level_2.gd" id="1_6xc7j"]
 [ext_resource type="PackedScene" uid="uid://buukchwddsq16" path="res://player_tank/player_tank.tscn" id="2_1kipn"]
@@ -6,6 +6,7 @@
 [ext_resource type="Material" uid="uid://ck5yy6bnnfhoe" path="res://environment/test_ground.tres" id="4_3jbwe"]
 [ext_resource type="PackedScene" uid="uid://2ikvy6rs6ql4" path="res://Collectibles/health_crate.tscn" id="5_n2rjg"]
 [ext_resource type="PackedScene" uid="uid://copk8kj3vfvb5" path="res://Collectibles/shell_crate.tscn" id="6_4xvo4"]
+[ext_resource type="PackedScene" uid="uid://cx8myedc6brit" path="res://PauseMenu.tscn" id="7_bed40"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b4fk2"]
 sky_top_color = Color(0.352941, 0.745098, 0.964706, 1)
@@ -115,5 +116,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 13)
 
 [node name="ObjectiveCheckTimer" type="Timer" parent="."]
 autostart = true
+
+[node name="PauseMenu" parent="." instance=ExtResource("7_bed40")]
+visible = false
 
 [connection signal="timeout" from="ObjectiveCheckTimer" to="." method="_on_objective_check_timer_timeout"]
