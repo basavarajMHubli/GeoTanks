@@ -24,6 +24,7 @@ var objectives := [
 ]
 
 var obj_remaining := objectives.size()
+var level3_path = "res://scenes/level_3.tscn"
 
 @onready var player_tank = $PlayerTank
 @onready var shell_crate = $NavigationRegion3D/ShellCrate
@@ -43,9 +44,10 @@ func _process(_delta):
 
 func _on_objective_check_timer_timeout():
 	if not obj_remaining:
-		objective_check_timer.stop()
 		print("Level-2 No objectives remaining")
-		# TODO: Load next level
+		objective_check_timer.stop()
+		UIManager.clear_all_ojectives()
+		SceneManager.load_scene(level3_path)
 		return
 
 	# TODO: Check below design be simplified/optimized
