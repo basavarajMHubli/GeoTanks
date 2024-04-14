@@ -16,7 +16,7 @@ spread = 180.0
 initial_velocity_max = 0.2
 gravity = Vector3(0, 0, 0)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o36we"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l1vpk"]
 transparency = 1
 blend_mode = 1
 shading_mode = 0
@@ -24,7 +24,7 @@ diffuse_mode = 3
 albedo_color = Color(0.266667, 0.266667, 0.266667, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_2pitu"]
-material = SubResource("StandardMaterial3D_o36we")
+material = SubResource("StandardMaterial3D_l1vpk")
 radial_segments = 8
 rings = 8
 

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/level_3.gd" id="1_awbue"]
 [ext_resource type="PackedScene" uid="uid://buukchwddsq16" path="res://player_tank/player_tank.tscn" id="2_jvhss"]
-[ext_resource type="Material" uid="uid://ck5yy6bnnfhoe" path="res://environment/test_ground.tres" id="4_3gpbg"]
+[ext_resource type="Material" uid="uid://ck5yy6bnnfhoe" path="res://environment/ground/test_ground.tres" id="4_3gpbg"]
 [ext_resource type="PackedScene" uid="uid://2ikvy6rs6ql4" path="res://Collectibles/health_crate.tscn" id="5_nvv82"]
 [ext_resource type="PackedScene" uid="uid://copk8kj3vfvb5" path="res://Collectibles/shell_crate.tscn" id="6_ad2oa"]
 [ext_resource type="PackedScene" uid="uid://cx8myedc6brit" path="res://PauseMenu.tscn" id="7_1uvfy"]
