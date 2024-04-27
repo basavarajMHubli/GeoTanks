@@ -6,7 +6,7 @@
 size = Vector3(100, 0.1, 100)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0qeht"]
-size = Vector3(10, 0.1, 10)
+size = Vector3(102.649, 0.1, 101.235)
 
 [node name="Node3D" type="Node3D"]
 
@@ -19,4 +19,5 @@ skeleton = NodePath("../..")
 [node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0542267, 0, -0.10825)
 shape = SubResource("BoxShape3D_0qeht")
