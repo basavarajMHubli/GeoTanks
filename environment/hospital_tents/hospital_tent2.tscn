@@ -1,0 +1,55 @@
+[gd_scene load_steps=10 format=3 uid="uid://co7bkm37hjnrg"]
+
+[ext_resource type="Texture2D" uid="uid://dlww76jktomp2" path="res://environment/hospital_tents/hospital_col.png" id="1_cogvq"]
+[ext_resource type="ArrayMesh" uid="uid://b24wmyoqw3ekn" path="res://environment/hospital_tents/SM_Hospital_Tent2.obj" id="2_rlqmu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jk7em"]
+albedo_texture = ExtResource("1_cogvq")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m1jfl"]
+size = Vector3(2.3, 1.8, 2.3)
+
+[sub_resource type="Gradient" id="Gradient_g2okn"]
+colors = PackedColorArray(0.681005, 0.264211, 0.150614, 1, 0.960784, 0.556863, 0.129412, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7eab0"]
+gradient = SubResource("Gradient_g2okn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_smuig"]
+lifetime_randomness = 0.6
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+linear_accel_max = 2.0
+tangential_accel_max = 0.5
+scale_min = 0.5
+color_ramp = SubResource("GradientTexture1D_7eab0")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3tb3w"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_3efca"]
+material = SubResource("StandardMaterial3D_3tb3w")
+
+[node name="HospitalTent2" type="StaticBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_jk7em")
+mesh = ExtResource("2_rlqmu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, 0.9, -0.05)
+shape = SubResource("BoxShape3D_m1jfl")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.66667, -0.33333)
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_smuig")
+draw_pass_1 = SubResource("SphereMesh_3efca")

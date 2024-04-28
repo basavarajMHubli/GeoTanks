@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcv0brqtj45hh"]
+
+[ext_resource type="ArrayMesh" uid="uid://c4s8l53cugpev" path="res://environment/rocks/SM_Rock3.obj" id="1_6hiif"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sv4sj"]
+size = Vector3(1.5, 0.9, 1.4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qxtmo"]
+albedo_color = Color(0.0117647, 0.168627, 0, 1)
+
+[node name="rock3" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0.45, -0.4)
+shape = SubResource("BoxShape3D_sv4sj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_qxtmo")
+mesh = ExtResource("1_6hiif")
+skeleton = NodePath("")

@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dxaxn0mm8fbg4"
+path="res://.godot/imported/SM_TentLong2.obj-d756bf34ea61ad1bdec8ec8a2f04c41e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/SM_TentLong2.obj-d756bf34ea61ad1bdec8ec8a2f04c41e.mesh"]
+
+source_file="res://environment/tent_long_2/SM_TentLong2.obj"
+dest_files=["res://.godot/imported/SM_TentLong2.obj-d756bf34ea61ad1bdec8ec8a2f04c41e.mesh", "res://.godot/imported/SM_TentLong2.obj-d756bf34ea61ad1bdec8ec8a2f04c41e.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

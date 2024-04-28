@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://drpuu8jul7155"
+path="res://.godot/imported/SM_Ground.obj-c3ef55f2474aec30035a4a0dc6299957.mesh"
+
+[deps]
+
+files=["res://.godot/imported/SM_Ground.obj-c3ef55f2474aec30035a4a0dc6299957.mesh"]
+
+source_file="res://environment/grasses/SM_Ground.obj"
+dest_files=["res://.godot/imported/SM_Ground.obj-c3ef55f2474aec30035a4a0dc6299957.mesh", "res://.godot/imported/SM_Ground.obj-c3ef55f2474aec30035a4a0dc6299957.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

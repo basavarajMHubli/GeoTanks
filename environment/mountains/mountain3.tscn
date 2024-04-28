@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bw8r5gd4q5c1s"]
+
+[ext_resource type="ArrayMesh" uid="uid://bj4wkjlbeshio" path="res://environment/mountains/SM_Mountain_3.obj" id="1_8uptr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dxylt"]
+albedo_color = Color(0.305882, 0.270588, 0.117647, 1)
+
+[node name="Mountain3" type="StaticBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_dxylt")
+mesh = ExtResource("1_8uptr")

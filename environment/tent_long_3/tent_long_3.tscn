@@ -1,0 +1,68 @@
+[gd_scene load_steps=10 format=3 uid="uid://3n70158eenyx"]
+
+[ext_resource type="ArrayMesh" uid="uid://c1bvitkp1hs3x" path="res://environment/tent_long_3/SM_TentLong3.obj" id="1_71mos"]
+[ext_resource type="Texture2D" uid="uid://d12ur2rph1d6h" path="res://environment/tent_long_1/tent_long_col.png" id="2_42yaq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ni08k"]
+albedo_texture = ExtResource("2_42yaq")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xbgvr"]
+size = Vector3(6.7, 2, 3)
+
+[sub_resource type="Gradient" id="Gradient_s0j7n"]
+colors = PackedColorArray(0.681005, 0.264211, 0.150614, 1, 0.960784, 0.556863, 0.129412, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7mfki"]
+gradient = SubResource("Gradient_s0j7n")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_glhk1"]
+lifetime_randomness = 0.6
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+linear_accel_max = 2.0
+tangential_accel_max = 0.5
+scale_min = 0.5
+color_ramp = SubResource("GradientTexture1D_7mfki")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lwbud"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_r5jrv"]
+material = SubResource("StandardMaterial3D_lwbud")
+
+[node name="TentLong3" type="StaticBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = ExtResource("1_71mos")
+surface_material_override/0 = SubResource("StandardMaterial3D_ni08k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 1, 0)
+shape = SubResource("BoxShape3D_xbgvr")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.66667, 0.66667)
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_glhk1")
+draw_pass_1 = SubResource("SphereMesh_r5jrv")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.66667, 1.66667)
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_glhk1")
+draw_pass_1 = SubResource("SphereMesh_r5jrv")
+
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.66667, -1.33333)
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_glhk1")
+draw_pass_1 = SubResource("SphereMesh_r5jrv")

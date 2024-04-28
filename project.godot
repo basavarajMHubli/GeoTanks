@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 SceneManager="*res://scene_manager/scene_manager.gd"
 UIManager="*res://UI/UIManager.tscn"
+SceneFade="*res://scene_manager/scene_fade.tscn"
+
+[display]
+
+window/size/always_on_top=true
 
 [filesystem]
 
