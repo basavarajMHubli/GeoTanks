@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://ckij8dukvmh82"]
+[gd_scene load_steps=29 format=3 uid="uid://ckij8dukvmh82"]
 
 [ext_resource type="Script" path="res://scenes/level_1.gd" id="1_6vy8p"]
 [ext_resource type="PackedScene" uid="uid://buukchwddsq16" path="res://player_tank/player_tank.tscn" id="2_eqnba"]
@@ -21,6 +21,9 @@
 [ext_resource type="PackedScene" uid="uid://026e5sokniyv" path="res://environment/grasses/grass_multimesh.tscn" id="18_1nq52"]
 [ext_resource type="PackedScene" uid="uid://be3yflbphb5a5" path="res://environment/grasses/grass_multimesh_long.tscn" id="19_3blge"]
 [ext_resource type="PackedScene" uid="uid://cyun4ao7bwgm1" path="res://environment/grasses/grass_multimesh_medium.tscn" id="19_muttv"]
+[ext_resource type="PackedScene" uid="uid://bcv0brqtj45hh" path="res://environment/rocks/rock3.tscn" id="21_ft8p2"]
+[ext_resource type="PackedScene" uid="uid://btviun407bdas" path="res://environment/rocks/rock1.tscn" id="22_jjehc"]
+[ext_resource type="PackedScene" uid="uid://duy1kj4p15ys3" path="res://environment/rocks/rock2.tscn" id="23_8kbuc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b4fk2"]
 sky_top_color = Color(0.352941, 0.745098, 0.964706, 1)
@@ -974,43 +977,74 @@ autostart = true
 [node name="PauseMenu" parent="." instance=ExtResource("7_75vj7")]
 visible = false
 
-[node name="GrassMultimesh11" parent="." instance=ExtResource("19_3blge")]
+[node name="grasses" type="Node" parent="."]
+
+[node name="GrassMultimesh11" parent="grasses" instance=ExtResource("19_3blge")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -250, 0, -262)
 
-[node name="GrassMultimesh12" parent="." instance=ExtResource("19_3blge")]
+[node name="GrassMultimesh12" parent="grasses" instance=ExtResource("19_3blge")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 271, 0, -325)
 
-[node name="GrassMultimesh13" parent="." instance=ExtResource("19_3blge")]
+[node name="GrassMultimesh13" parent="grasses" instance=ExtResource("19_3blge")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 389, 0, -32)
 
-[node name="GrassMultimesh14" parent="." instance=ExtResource("19_3blge")]
+[node name="GrassMultimesh14" parent="grasses" instance=ExtResource("19_3blge")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 169, 0, 418)
 
-[node name="GrassMultimesh15" parent="." instance=ExtResource("19_3blge")]
+[node name="GrassMultimesh15" parent="grasses" instance=ExtResource("19_3blge")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -288, 0, 245)
 
-[node name="GrassMultimesh3" parent="." instance=ExtResource("19_muttv")]
+[node name="GrassMultimesh3" parent="grasses" instance=ExtResource("19_muttv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 112, 0, -86)
 
-[node name="GrassMultimesh8" parent="." instance=ExtResource("19_muttv")]
+[node name="GrassMultimesh8" parent="grasses" instance=ExtResource("19_muttv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70, 1.0008, 101)
 
-[node name="GrassMultimesh" parent="." instance=ExtResource("18_1nq52")]
+[node name="GrassMultimesh" parent="grasses" instance=ExtResource("18_1nq52")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56, 0, -75)
 
-[node name="GrassMultimesh5" parent="." instance=ExtResource("18_1nq52")]
+[node name="GrassMultimesh5" parent="grasses" instance=ExtResource("18_1nq52")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77, 0, -68)
 
-[node name="GrassMultimesh6" parent="." instance=ExtResource("18_1nq52")]
+[node name="GrassMultimesh6" parent="grasses" instance=ExtResource("18_1nq52")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81, 0, -48)
 
-[node name="GrassMultimesh9" parent="." instance=ExtResource("18_1nq52")]
+[node name="GrassMultimesh9" parent="grasses" instance=ExtResource("18_1nq52")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51, 0, 84)
 
-[node name="GrassMultimesh7" parent="." instance=ExtResource("18_1nq52")]
+[node name="GrassMultimesh7" parent="grasses" instance=ExtResource("18_1nq52")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85, 0, -26)
 
-[node name="GrassMultimesh2" parent="." instance=ExtResource("18_1nq52")]
+[node name="GrassMultimesh2" parent="grasses" instance=ExtResource("18_1nq52")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75, 0, 77)
+
+[node name="rocks" type="Node" parent="."]
+
+[node name="rock1" parent="rocks" instance=ExtResource("22_jjehc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68, 0, -22)
+
+[node name="rock2" parent="rocks" instance=ExtResource("23_8kbuc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 84, 0, -37)
+
+[node name="rock3" parent="rocks" instance=ExtResource("21_ft8p2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -66)
+
+[node name="rock4" parent="rocks" instance=ExtResource("22_jjehc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68, 0, 54)
+
+[node name="rock5" parent="rocks" instance=ExtResource("23_8kbuc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 84, 0, 39)
+
+[node name="rock6" parent="rocks" instance=ExtResource("21_ft8p2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 10)
+
+[node name="rock7" parent="rocks" instance=ExtResource("22_jjehc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, 75)
+
+[node name="rock8" parent="rocks" instance=ExtResource("23_8kbuc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 60)
+
+[node name="rock9" parent="rocks" instance=ExtResource("21_ft8p2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 0, 31)
 
 [connection signal="timeout" from="ObjectiveCheckTimer" to="." method="_on_objective_check_timer_timeout"]
