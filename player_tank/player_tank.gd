@@ -19,7 +19,8 @@ func _ready():
 	# Init health
 	cur_health = max_health
 	health_bar.value = cur_health
-	
+	UIManager.update_shells(shell_count)
+
 
 func _physics_process(delta: float):
 	var direction := Vector3.ZERO
@@ -59,6 +60,7 @@ func fire_shell():
 		shell.position = $turret/FirePoint.global_position
 		shell.rotation = $turret/FirePoint.global_rotation
 		get_parent().add_child(shell)
+		UIManager.update_shells(shell_count)
 	
 	print("Player: shell count " + str(shell_count))
 
@@ -107,4 +109,5 @@ func health_update(gain):
 
 func shell_count_update(gain):
 	shell_count += gain
+	UIManager.update_shells(shell_count)
 	print("Player: shell count updated to " + str(shell_count))

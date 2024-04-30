@@ -24,10 +24,18 @@ offset_top = 84.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="CanvasLayer"]
+[node name="ObjectivesLabel" type="Label" parent="CanvasLayer"]
 offset_left = 918.0
 offset_top = 30.0
 offset_right = 1152.0
 offset_bottom = 75.0
 theme_override_font_sizes/font_size = 32
 text = "Objectives"
+
+[node name="ShellsLabel" type="Label" parent="CanvasLayer"]
+offset_left = 37.0
+offset_top = 30.0
+offset_right = 271.0
+offset_bottom = 75.0
+theme_override_font_sizes/font_size = 32
+text = "Shells x"

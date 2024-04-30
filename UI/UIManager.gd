@@ -2,6 +2,7 @@ extends Control
 
 @onready var obj_v_box_container = $CanvasLayer/ObjectiveVBoxContainer
 @onready var canvas_layer = $CanvasLayer
+@onready var shells_label = $CanvasLayer/ShellsLabel
 
 
 func display_obj(obj_text):
@@ -24,6 +25,11 @@ func clear_all_ojectives():
 	for child in obj_v_box_container.get_children():
 		obj_v_box_container.remove_child(child)
 		child.queue_free() 
+
+
+func update_shells(shell_count: int):
+	shells_label.text = "Shells " + str(shell_count)
+
 
 func ui_visibility(state: bool):
 	canvas_layer.visible = state
