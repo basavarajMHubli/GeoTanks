@@ -98,6 +98,8 @@ func player_die():
 	set_physics_process(false)
 
 
+# This method is called in health crate collectible class
+# @param gain: number of health points gained
 func health_update(gain):
 	cur_health += gain
 	if cur_health > 100:
@@ -107,6 +109,8 @@ func health_update(gain):
 	print("Player: Health update to " + str(cur_health))
 
 
+# This method is called in shell crate collectible class
+# @param gain: number of shells gained
 func shell_count_update(gain):
 	shell_count += gain
 	UIManager.update_shells(shell_count)

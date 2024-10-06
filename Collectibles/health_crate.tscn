@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://2ikvy6rs6ql4"]
 
-[ext_resource type="Script" path="res://Collectibles/health_create.gd" id="1_jkaub"]
+[ext_resource type="Script" path="res://Collectibles/health_crate.gd" id="1_jkaub"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3b2r7"]
 size = Vector3(3, 1, 3)
