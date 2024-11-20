@@ -61,6 +61,7 @@ func fire_shell():
 		shell.rotation = $turret/FirePoint.global_rotation
 		get_parent().add_child(shell)
 		UIManager.update_shells(shell_count)
+		shell.connect("camera_shake", $SpringArm3D/Camera3D._on_player_tank_camera_shake)
 	
 	print("Player: shell count " + str(shell_count))
 

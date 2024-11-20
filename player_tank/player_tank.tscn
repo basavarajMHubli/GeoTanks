@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://buukchwddsq16"]
+[gd_scene load_steps=10 format=3 uid="uid://buukchwddsq16"]
 
 [ext_resource type="Script" path="res://player_tank/player_tank.gd" id="1_lv3pb"]
 [ext_resource type="ArrayMesh" uid="uid://b58buti8cprjb" path="res://player_tank/SM_PlayerTurret.obj" id="2_simda"]
 [ext_resource type="Material" uid="uid://efslj53ftobf" path="res://player_tank/player_tank.tres" id="2_vgbyp"]
 [ext_resource type="ArrayMesh" uid="uid://dpc2f1xq5gwau" path="res://player_tank/SM_PlayerBase.obj" id="3_wcxlb"]
+[ext_resource type="Script" path="res://player_tank/camera_3d.gd" id="5_fxw7l"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_itc2q"]
 radius = 1.2568
@@ -43,6 +44,10 @@ margin = 0.5
 [node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
 transform = Transform3D(1, 0, 0, 0, 1, -5.96046e-08, 0, 2.98023e-08, 1, 0, -0.0420952, 7.97016)
 fov = 35.0
+script = ExtResource("5_fxw7l")
+
+[node name="shake_timer" type="Timer" parent="SpringArm3D/Camera3D"]
+wait_time = 0.2
 
 [node name="StatsSubViewport" type="SubViewport" parent="."]
 transparent_bg = true
@@ -73,3 +78,5 @@ texture = SubResource("ViewportTexture_ruvb5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractorArea3D"]
 shape = SubResource("BoxShape3D_hr6kr")
+
+[connection signal="timeout" from="SpringArm3D/Camera3D/shake_timer" to="SpringArm3D/Camera3D" method="_on_shake_timer_timeout"]

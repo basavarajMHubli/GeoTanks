@@ -7,6 +7,8 @@ const KILL_TIMER = 1
 var timer = 0
 var hit_someting = false
 
+signal camera_shake
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Area3D.connect("body_entered", self.collided)
@@ -19,7 +21,7 @@ func _physics_process(delta):
 
 	timer += delta
 	if timer >= KILL_TIMER:
-		queue_free()
+		destroy()
 
 
 func collided(body):
@@ -29,4 +31,9 @@ func collided(body):
 			body.shell_hit(SHELL_DAMAGE, global_transform)
 			
 	hit_someting = true
+	destroy()
+
+
+func destroy():
+	emit_signal("camera_shake")
 	queue_free()
