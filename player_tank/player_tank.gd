@@ -19,7 +19,8 @@ func _ready():
 	# Init health
 	cur_health = max_health
 	health_bar.value = cur_health
-	
+	UIManager.update_shells(shell_count)
+
 
 func _physics_process(delta: float):
 	var direction := Vector3.ZERO
@@ -59,6 +60,8 @@ func fire_shell():
 		shell.position = $turret/FirePoint.global_position
 		shell.rotation = $turret/FirePoint.global_rotation
 		get_parent().add_child(shell)
+		UIManager.update_shells(shell_count)
+		shell.connect("camera_shake", $SpringArm3D/Camera3D._on_player_tank_camera_shake)
 	
 	print("Player: shell count " + str(shell_count))
 
@@ -96,6 +99,8 @@ func player_die():
 	set_physics_process(false)
 
 
+# This method is called in health crate collectible class
+# @param gain: number of health points gained
 func health_update(gain):
 	cur_health += gain
 	if cur_health > 100:
@@ -105,6 +110,9 @@ func health_update(gain):
 	print("Player: Health update to " + str(cur_health))
 
 
+# This method is called in shell crate collectible class
+# @param gain: number of shells gained
 func shell_count_update(gain):
 	shell_count += gain
+	UIManager.update_shells(shell_count)
 	print("Player: shell count updated to " + str(shell_count))
