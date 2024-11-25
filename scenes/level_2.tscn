@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://coxnlx6injpmt"]
+[gd_scene load_steps=38 format=3 uid="uid://coxnlx6injpmt"]
 
 [ext_resource type="Script" path="res://scenes/level_2.gd" id="1_6xc7j"]
 [ext_resource type="PackedScene" uid="uid://buukchwddsq16" path="res://player_tank/player_tank.tscn" id="2_1kipn"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://environment/rd_facility/rd_facility_enemy.gd" id="6_6tqw6"]
 [ext_resource type="PackedScene" uid="uid://bn2rxskbyo83p" path="res://environment/ground/ground.tscn" id="6_7hq0l"]
 [ext_resource type="PackedScene" uid="uid://cx8myedc6brit" path="res://pause_menu/PauseMenu.tscn" id="7_bed40"]
+[ext_resource type="Script" path="res://Collectibles/energy_core.gd" id="7_wp2dc"]
 [ext_resource type="PackedScene" uid="uid://pkjqkrw80ok4" path="res://environment/mountains/mountain1.tscn" id="9_tj2yi"]
 [ext_resource type="PackedScene" uid="uid://niqwuu1m2epe" path="res://environment/mountains/mountain2.tscn" id="10_5l2wh"]
 [ext_resource type="PackedScene" uid="uid://c5jssilsnsles" path="res://environment/up_post_1/up_post_1.tscn" id="11_7g7og"]
@@ -58,9 +59,11 @@ bg_color = Color(0, 1, 0, 1)
 [sub_resource type="ViewportTexture" id="ViewportTexture_t6qbf"]
 viewport_path = NodePath("NavigationRegion3D/RD_Facility/StatsSubViewport")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_egkw2"]
+
 [sub_resource type="BoxMesh" id="BoxMesh_ub74q"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_egkw2"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_uoidk"]
 size = Vector3(2, 2, 2)
 
 [node name="Level2" type="Node3D"]
@@ -778,15 +781,30 @@ billboard = 2
 no_depth_test = true
 texture = SubResource("ViewportTexture_t6qbf")
 
-[node name="EnergyCore" type="MeshInstance3D" parent="NavigationRegion3D/RD_Facility"]
+[node name="EnergyCore" type="Area3D" parent="NavigationRegion3D/RD_Facility"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
 visible = false
-mesh = SubResource("BoxMesh_ub74q")
+script = ExtResource("7_wp2dc")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/RD_Facility/EnergyCore"]
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/RD_Facility/EnergyCore/StaticBody3D"]
 shape = SubResource("BoxShape3D_egkw2")
+
+[node name="EnergyCore" type="MeshInstance3D" parent="NavigationRegion3D/RD_Facility/EnergyCore"]
+mesh = SubResource("BoxMesh_ub74q")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/RD_Facility/EnergyCore"]
+shape = SubResource("BoxShape3D_uoidk")
+
+[node name="HelpText" type="Label3D" parent="NavigationRegion3D/RD_Facility/EnergyCore"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+visible = false
+billboard = 1
+text = "E to collect"
+font_size = 128
 
 [node name="Ground" parent="NavigationRegion3D" instance=ExtResource("6_7hq0l")]
 
@@ -1134,3 +1152,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85, 0, -26)
 
 [node name="GrassMultimesh2" parent="grasses" instance=ExtResource("26_msnxn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75, 0, 77)
+
+[connection signal="body_entered" from="NavigationRegion3D/RD_Facility/EnergyCore" to="NavigationRegion3D/RD_Facility/EnergyCore" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/RD_Facility/EnergyCore" to="NavigationRegion3D/RD_Facility/EnergyCore" method="_on_body_exited"]
