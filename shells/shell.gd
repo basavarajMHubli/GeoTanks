@@ -35,5 +35,5 @@ func collided(body):
 
 
 func destroy():
-	emit_signal("camera_shake")
+	camera_shake.emit()
 	queue_free()

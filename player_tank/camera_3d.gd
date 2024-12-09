@@ -8,7 +8,7 @@ func _ready() -> void:
 	set_process(false)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var x = randf_range(-amplitude, amplitude)
 	var y = randf_range(-amplitude, amplitude)
 	var z = randf_range(-amplitude, amplitude)

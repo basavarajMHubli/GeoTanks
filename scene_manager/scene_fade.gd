@@ -13,5 +13,5 @@ func fade_out():
 	animation_player.play("fade_to_normal")
 
 
-func _on_animation_player_animation_finished(anim_name):
+func _on_animation_player_animation_finished(_anim_name):
 	color_rect.visible = false
