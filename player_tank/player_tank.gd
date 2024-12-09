@@ -21,7 +21,6 @@ func _ready():
 	health_bar.value = cur_health
 	UIManager.update_shells(shell_count)
 
-
 func _physics_process(delta: float):
 	var direction := Vector3.ZERO
 	

@@ -32,14 +32,11 @@ var level2_path = "res://scenes/level_2.tscn"
 @onready var objective_check_timer = $ObjectiveCheckTimer
 
 func _ready():
-	SceneFade.color_rect.visible = true
 	UIManager.ui_visibility(true)
 	for obj in objectives:
 		UIManager.display_obj(obj["name"])
 	SceneFade.fade_out()
-	await SceneFade.on_fade_out_finished
-	SceneFade.color_rect.visible = false
-	
+
 
 func _process(_delta):
 	get_tree().call_group("enemies", "update_target_location",

@@ -35,7 +35,8 @@ func _ready():
 	UIManager.ui_visibility(true)
 	for obj in objectives:
 		UIManager.display_obj(obj["name"])
-
+	SceneFade.fade_out()
+	
 
 func _process(_delta):
 	get_tree().call_group("enemies", "update_target_location",
