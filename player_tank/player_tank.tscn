@@ -43,6 +43,7 @@ margin = 0.5
 
 [node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
 transform = Transform3D(1, 0, 0, 0, 1, -5.96046e-08, 0, 2.98023e-08, 1, 0, -0.0420952, 7.97016)
+current = true
 fov = 35.0
 script = ExtResource("5_fxw7l")
 
