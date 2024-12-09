@@ -24,7 +24,6 @@ func _ready():
 	
 
 func _physics_process(_delta):
-	# FIXME: target_desired_distance is not working in v4.1
 	if not nav_agent.is_target_reached():
 		move_towards_player()
 
@@ -35,9 +34,8 @@ func move_towards_player():
 	var next_dir = next_loc - curr_loc
 	var new_velocity = next_dir.normalized() * move_speed
 	
+	next_loc.y = curr_loc.y # We don't want tank to look at ground
 	if not curr_loc.is_equal_approx(next_loc):
-		# TODO: Re-check
-		next_loc.y = curr_loc.y
 		look_at(next_loc, Vector3.UP)
 
 	nav_agent.set_velocity(new_velocity)
