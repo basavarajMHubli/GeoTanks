@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bi00ua5nemag2"]
+[gd_scene load_steps=10 format=3 uid="uid://bi00ua5nemag2"]
 
 [ext_resource type="Script" path="res://enemies/enemy_tank.gd" id="1_h4bce"]
 [ext_resource type="Material" uid="uid://bjwcrwq8e01pp" path="res://enemies/M_EnemyTank.tres" id="2_48gq8"]
 [ext_resource type="ArrayMesh" uid="uid://cskfsd56xm5dj" path="res://enemies/SM_EnemyBase.obj" id="3_2iten"]
 [ext_resource type="ArrayMesh" uid="uid://ciwgo0u0nbe2f" path="res://enemies/SM_EnemyTurret.obj" id="5_3mqte"]
+[ext_resource type="Script" path="res://enemies/target_reticle.gd" id="5_odafi"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_bvd31"]
 
@@ -12,6 +13,8 @@ bg_color = Color(1, 0, 0, 1)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_0axxc"]
 viewport_path = NodePath("StatsSubViewport")
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_r3jgr"]
 
 [node name="EnemyTank" type="CharacterBody3D" groups=["enemies"]]
 script = ExtResource("1_h4bce")
@@ -61,5 +64,25 @@ show_percentage = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 billboard = 1
 texture = SubResource("ViewportTexture_0axxc")
+
+[node name="TargetReticle" type="Node3D" parent="."]
+script = ExtResource("5_odafi")
+
+[node name="OffscreenReticle" type="TextureRect" parent="TargetReticle"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(20, 20)
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = SubResource("PlaceholderTexture2D_r3jgr")
 
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
