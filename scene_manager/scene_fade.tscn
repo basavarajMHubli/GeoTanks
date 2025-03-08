@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://80abstdlgk5n"]
 
-[ext_resource type="Script" path="res://scene_manager/scene_fade.gd" id="1_rtteo"]
+[ext_resource type="Script" uid="uid://bknay7eijfttg" path="res://scene_manager/scene_fade.gd" id="1_rtteo"]
 
 [sub_resource type="Animation" id="Animation_8ghjp"]
 resource_name = "fade_to_normal"
@@ -19,7 +19,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wkre8"]
 _data = {
-"fade_to_normal": SubResource("Animation_8ghjp")
+&"fade_to_normal": SubResource("Animation_8ghjp")
 }
 
 [node name="SceneTransition" type="CanvasLayer"]

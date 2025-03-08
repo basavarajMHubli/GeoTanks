@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bi00ua5nemag2"]
 
-[ext_resource type="Script" path="res://enemies/enemy_tank.gd" id="1_h4bce"]
+[ext_resource type="Script" uid="uid://d3h3eu5ms3h1o" path="res://enemies/enemy_tank.gd" id="1_h4bce"]
 [ext_resource type="Material" uid="uid://bjwcrwq8e01pp" path="res://enemies/M_EnemyTank.tres" id="2_48gq8"]
 [ext_resource type="ArrayMesh" uid="uid://cskfsd56xm5dj" path="res://enemies/SM_EnemyBase.obj" id="3_2iten"]
 [ext_resource type="ArrayMesh" uid="uid://ciwgo0u0nbe2f" path="res://enemies/SM_EnemyTurret.obj" id="5_3mqte"]

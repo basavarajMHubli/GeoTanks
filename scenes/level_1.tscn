@@ -1,6 +1,6 @@
 [gd_scene load_steps=31 format=3 uid="uid://ckij8dukvmh82"]
 
-[ext_resource type="Script" path="res://scenes/level_1.gd" id="1_6vy8p"]
+[ext_resource type="Script" uid="uid://bku6ad5hwjyda" path="res://scenes/level_1.gd" id="1_6vy8p"]
 [ext_resource type="PackedScene" uid="uid://buukchwddsq16" path="res://player_tank/player_tank.tscn" id="2_eqnba"]
 [ext_resource type="PackedScene" uid="uid://bi00ua5nemag2" path="res://enemies/enemy_tank.tscn" id="3_g4lg8"]
 [ext_resource type="PackedScene" uid="uid://blw5vnr06xmb7" path="res://environment/tent_long_1/tent_long_1.tscn" id="5_3kb3v"]

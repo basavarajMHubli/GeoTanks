@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b81dhlbwmgarg"]
 
-[ext_resource type="Script" path="res://UI/offscreen_indicator.gd" id="1_nakxc"]
+[ext_resource type="Script" uid="uid://d3po6s7t0ao47" path="res://UI/offscreen_indicator.gd" id="1_nakxc"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_r3jgr"]
 
