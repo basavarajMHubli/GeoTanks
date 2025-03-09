@@ -1085,4 +1085,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85, 0, -26)
 [node name="GrassMultimesh2" parent="grasses" instance=ExtResource("18_1nq52")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75, 0, 77)
 
+[connection signal="airstrike" from="PlayerTank" to="." method="_on_player_tank_airstrike"]
 [connection signal="timeout" from="ObjectiveCheckTimer" to="." method="_on_objective_check_timer_timeout"]
