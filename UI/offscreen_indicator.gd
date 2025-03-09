@@ -1,0 +1,35 @@
+extends Node3D
+
+var camera : Camera3D
+var viewport_centre : Vector2
+var reticle_offset := Vector2(20, 20)
+var border_offset := Vector2(20, 20)
+var max_reticle_position : Vector2
+
+@onready var indicator: TextureRect = $Indicator
+
+
+func _ready() -> void:
+	camera = get_viewport().get_camera_3d()
+	viewport_centre = get_viewport().size / 2.0
+	max_reticle_position = viewport_centre - border_offset
+
+
+func _process(_delta: float) -> void:
+	if not camera.is_position_in_frustum(global_position):
+		indicator.show()
+
+		print("camera position: ", camera.global_position)
+		print("self position: ", global_position)
+		print("to_local: ", camera.to_local(global_position))
+		var local_to_camera = camera.to_local(global_position)
+		var reticle_position = Vector2(local_to_camera.x, -local_to_camera.y)
+		print("reticle pos: ", reticle_position)
+		if reticle_position.abs().aspect() > max_reticle_position.abs().aspect():
+			reticle_position *= max_reticle_position.x / abs(reticle_position.x)
+		else:
+			reticle_position *= max_reticle_position.y / abs(reticle_position.y)
+		
+		indicator.set_global_position(viewport_centre + reticle_position - reticle_offset)
+	else:
+		indicator.hide()
