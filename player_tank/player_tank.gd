@@ -8,6 +8,7 @@ extends CharacterBody3D
 @export var shell_count = 0
 
 var target_velocity := Vector3.ZERO
+var airstrike_call_count = 0
 var shell_scene := preload("res://shells/shell.tscn")
 const RAY_LENGTH := 2000
 signal airstrike
@@ -68,7 +69,17 @@ func fire_shell():
 	print("Player: shell count " + str(shell_count))
 
 
+func enable_airstrike(call_count):
+	print("Player: Enabling airstrike, count " + str(call_count))
+	airstrike_call_count = call_count
+
+
 func call_airstrike():
+	if airstrike_call_count == 0:
+		print("Player: Airstrike call count 0")
+		return
+
+	airstrike_call_count -= 1
 	emit_signal("airstrike")
 
 
