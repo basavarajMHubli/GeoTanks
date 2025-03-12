@@ -25,6 +25,9 @@ var objectives := [
 
 var obj_remaining := objectives.size()
 var level2_path = "res://scenes/level_2.tscn"
+var shell_scene := preload("res://shells/airstrike_shell.tscn")
+var airstrike_spawn_height := 10
+var enemies : Array[Node]
 
 @onready var player_tank = $PlayerTank
 @onready var shell_crate = $NavigationRegion3D/ShellCrate
@@ -41,11 +44,12 @@ func _ready():
 func _process(_delta):
 	get_tree().call_group("enemies", "update_target_location",
 						  player_tank.global_transform.origin)
+	enemies = get_tree().get_nodes_in_group("enemies")
 
 
 func _on_objective_check_timer_timeout():
 	if not obj_remaining:
-		print("Level-1 No objectives remaining")		
+		print("Level-1 No objectives remaining")
 		objective_check_timer.stop()
 		UIManager.clear_all_ojectives()
 		SceneManager.load_scene(level2_path)
@@ -73,3 +77,13 @@ func _on_objective_check_timer_timeout():
 						obj_remaining -= 1
 				_:
 					print("Level-1: No matching obj id")
+
+
+func _on_player_tank_airstrike() -> void:
+	for enemy in enemies:
+		var shell := shell_scene.instantiate()
+		shell.position = player_tank.global_position
+		shell.position.y += airstrike_spawn_height
+		shell.rotation = player_tank.global_rotation
+		get_parent().add_child(shell)
+		shell.look_at(enemy.global_position, Vector3.UP)

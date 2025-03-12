@@ -1,6 +1,6 @@
 extends Area3D
 
-@export var shell_gain := 25
+@export var call_count := 2
 
 var player_interactor: Node3D = null
 
@@ -20,11 +20,11 @@ func _on_body_exited(body):
 
 func _input(event):
 	if player_interactor and event.is_action_pressed("interact"):
-		print("shellCrate: Interacting")
-		player_interactor.shell_count_update(shell_gain)
+		print("Airstrike Beacon: Interacting")
+		player_interactor.enable_airstrike(call_count)
 		destroy_shell_crate()
 
 
 func destroy_shell_crate():
-	print("ShellCrate: Freeing")
+	print("Airstrike Beacon: Freeing")
 	queue_free()

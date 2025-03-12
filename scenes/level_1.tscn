@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://ckij8dukvmh82"]
+[gd_scene load_steps=32 format=3 uid="uid://ckij8dukvmh82"]
 
 [ext_resource type="Script" uid="uid://bku6ad5hwjyda" path="res://scenes/level_1.gd" id="1_6vy8p"]
 [ext_resource type="PackedScene" uid="uid://buukchwddsq16" path="res://player_tank/player_tank.tscn" id="2_eqnba"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://bcv0brqtj45hh" path="res://environment/rocks/rock3.tscn" id="21_ft8p2"]
 [ext_resource type="PackedScene" uid="uid://btviun407bdas" path="res://environment/rocks/rock1.tscn" id="22_jjehc"]
 [ext_resource type="PackedScene" uid="uid://duy1kj4p15ys3" path="res://environment/rocks/rock2.tscn" id="23_8kbuc"]
+[ext_resource type="PackedScene" uid="uid://btfefnsfi8rmt" path="res://Collectibles/airstrike_beacon.tscn" id="23_mmfjm"]
 [ext_resource type="PackedScene" uid="uid://c47qxhx15xau3" path="res://environment/hospital_tents/hospital_tent1.tscn" id="25_nqkkt"]
 [ext_resource type="PackedScene" uid="uid://co7bkm37hjnrg" path="res://environment/hospital_tents/hospital_tent2.tscn" id="26_16r71"]
 
@@ -1038,6 +1039,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45, 0, 13)
 [node name="HospitalTent2" parent="NavigationRegion3D/hospital_tents" instance=ExtResource("26_16r71")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, 68)
 
+[node name="AirstrikeBeacon" parent="NavigationRegion3D" instance=ExtResource("23_mmfjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 1, -11)
+
 [node name="ObjectiveCheckTimer" type="Timer" parent="."]
 autostart = true
 
@@ -1085,4 +1089,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85, 0, -26)
 [node name="GrassMultimesh2" parent="grasses" instance=ExtResource("18_1nq52")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75, 0, 77)
 
+[connection signal="airstrike" from="PlayerTank" to="." method="_on_player_tank_airstrike"]
 [connection signal="timeout" from="ObjectiveCheckTimer" to="." method="_on_objective_check_timer_timeout"]
