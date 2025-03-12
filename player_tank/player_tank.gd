@@ -72,6 +72,7 @@ func fire_shell():
 func enable_airstrike(call_count):
 	print("Player: Enabling airstrike, count " + str(call_count))
 	airstrike_call_count = call_count
+	UIManager.update_airstrike_count(call_count)
 
 
 func call_airstrike():
