@@ -15,7 +15,7 @@ func shell_hit(damage_value, _hit_point):
 	print("RD_Facility_Enemy: took damage " + str(damage_value))
 	cur_health -= damage_value
 	health_bar.value = cur_health
-	
+
 	if cur_health <= 0:
 		print("RD_Facility_Enemy: Destroyed")
 		$EnergyCore.visible = true
