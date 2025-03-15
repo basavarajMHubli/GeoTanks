@@ -8,7 +8,7 @@ var player_interactor: Node3D = null
 
 func _on_body_entered(body):
 	if body.is_in_group("player"):
-		help_text.visible = true		
+		help_text.visible = true
 		player_interactor = body
 
 

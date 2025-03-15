@@ -17,11 +17,11 @@ func _ready():
 	fire_timer.wait_time = fire_delay
 	fire_timer.connect("timeout", _on_fire_timer_timeout)
 	fire_timer.start()
-	
+
 	# Init health
 	cur_health = max_health
 	health_bar.value = cur_health
-	
+
 
 func _physics_process(_delta):
 	if not nav_agent.is_target_reached():
@@ -33,7 +33,7 @@ func move_towards_player():
 	var next_loc = nav_agent.get_next_path_position()
 	var next_dir = next_loc - curr_loc
 	var new_velocity = next_dir.normalized() * move_speed
-	
+
 	next_loc.y = curr_loc.y # We don't want tank to look at ground
 	if not curr_loc.is_equal_approx(next_loc):
 		look_at(next_loc, Vector3.UP)
@@ -60,7 +60,7 @@ func _on_fire_timer_timeout():
 
 func shell_hit(damage_value, hit_point):
 	printt("Enemy:", damage_value, hit_point)
-	
+
 	cur_health -= damage_value
 	health_bar.value = cur_health
 	if cur_health <= 0:
