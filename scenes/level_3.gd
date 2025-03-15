@@ -18,16 +18,21 @@ var is_extraction_timer_expired
 @onready var player_tank = $PlayerTank
 @onready var shell_crate = $NavigationRegion3D/ShellCrate
 @onready var health_crate = $NavigationRegion3D/HealthCrate
+@onready var extraction_timer_label: Label = $CanvasLayer/ExtractionTimerLabel
+@onready var extraction_timer: Timer = $ExtractionTimer
+
 
 func _ready():
 	UIManager.ui_visibility(true)
 	for obj in objectives:
 		UIManager.display_obj(obj["name"])
+	extraction_timer_label.text = str(extraction_timer.time_left)
 
 
 func _process(_delta):
 	get_tree().call_group("enemies", "update_target_location",
 						  player_tank.global_transform.origin)
+	extraction_timer_label.text = str(int(extraction_timer.time_left))
 
 
 func _on_extraction_timer_timeout():
