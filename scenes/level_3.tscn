@@ -38,7 +38,7 @@ size = Vector3(10, 0.1, 10)
 
 [sub_resource type="Curve3D" id="Curve3D_xuqpc"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -60.0748, 0, -52.793, 0, 0, 0, 0, 0, 0, -0.36409, 0, -86.2893, 0, 0, 0, 0, 0, 0, 55.7057, 0, -51.7007, 0, 0, 0, 0, 0, 0, 85.197, 0, -1.82045, 0, 0, 0, 0, 0, 0, 56.798, 0, 50.6085, 0, 0, 0, 0, 0, 0, 0.36409, 0, 76.8229, 0, 0, 0, 0, 0, 0, -51.3366, 0, 48.0598, 0, 0, 0, 0, 0, 0, -80.8279, 0, -6.55361, 0, 0, 0, 0, 0, 0, -60.0748, 0, -52.793),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -60.0748, 0, -53.793, 0, 0, 0, 0, 0, 0, -0.36409, 0, -86.2893, 0, 0, 0, 0, 0, 0, 55.7057, 0, -51.7007, 0, 0, 0, 0, 0, 0, 85.197, 0, -1.82045, 0, 0, 0, 0, 0, 0, 56.798, 0, 50.6085, 0, 0, 0, 0, 0, 0, 0.36409, 0, 76.8229, 0, 0, 0, 0, 0, 0, -51.3366, 0, 48.0598, 0, 0, 0, 0, 0, 0, -80.8279, 0, -6.55361, 0, 0, 0, 0, 0, 0, -60.0748, 0, -52.793),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 9
@@ -51,6 +51,8 @@ environment = SubResource("Environment_kury7")
 
 [node name="PlayerTank" parent="." groups=["player"] instance=ExtResource("2_jvhss")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.38488, 1.68043, 1.1244)
+move_speed = 32
+turn_speed = 4
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.611527, 0.159098, -0.775063, 0, 0.979575, 0.201079, 0.791224, 0.122965, -0.599037, -0.459754, 6.39808, 0)
@@ -141,17 +143,33 @@ visible = false
 curve = SubResource("Curve3D_xuqpc")
 
 [node name="SpawnPathLocation" type="PathFollow3D" parent="SpawnPath"]
-transform = Transform3D(0.489251, 0, -0.872141, 0, 1, 0, 0.872141, 0, 0.489251, -60.0748, 0, -52.793)
+transform = Transform3D(0.478021, 0, -0.878345, 0, 1, 0, 0.878345, 0, 0.478021, -60.0748, 0, -53.793)
 rotation_mode = 1
 
 [node name="ExtractionTimer" type="Timer" parent="."]
-wait_time = 7.0
+wait_time = 32.0
 one_shot = true
 autostart = true
 
 [node name="EnemySpawnTimer" type="Timer" parent="."]
 wait_time = 3.0
 autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ExtractionTimerLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -32.0
+offset_top = 34.0
+offset_right = 61.0
+offset_bottom = 122.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 64
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="timeout" from="ExtractionTimer" to="." method="_on_extraction_timer_timeout"]
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
