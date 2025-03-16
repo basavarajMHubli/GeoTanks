@@ -80,4 +80,8 @@ texture = SubResource("ViewportTexture_ruvb5")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractorArea3D"]
 shape = SubResource("BoxShape3D_hr6kr")
 
+[node name="ReloadTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="timeout" from="SpringArm3D/Camera3D/shake_timer" to="SpringArm3D/Camera3D" method="_on_shake_timer_timeout"]
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
