@@ -6,14 +6,17 @@ extends CharacterBody3D
 @export var max_health = 100
 @export var cur_health = 0
 @export var shell_count = 0
+@export var reload_time := 1.0
 
 var target_velocity := Vector3.ZERO
 var airstrike_call_count = 0
+var is_reloading := false
 var shell_scene := preload("res://shells/shell.tscn")
 const RAY_LENGTH := 2000
 signal airstrike
 
 @onready var health_bar = $StatsSubViewport/HealthBar
+@onready var reload_timer: Timer = $ReloadTimer
 
 
 func _ready():
@@ -57,7 +60,8 @@ func _process(_delta: float):
 
 
 func fire_shell():
-	if shell_count:
+	if shell_count and not is_reloading:
+		is_reloading = true
 		shell_count -= 1
 		var shell := shell_scene.instantiate()
 		shell.position = $turret/FirePoint.global_position
@@ -65,6 +69,8 @@ func fire_shell():
 		get_parent().add_child(shell)
 		UIManager.update_shells(shell_count)
 		shell.connect("camera_shake", $SpringArm3D/Camera3D._on_player_tank_camera_shake)
+		reload_timer.start(reload_time)
+		UIManager.start_shell_reload(reload_time)
 
 	print("Player: shell count " + str(shell_count))
 
@@ -134,3 +140,8 @@ func shell_count_update(gain):
 	shell_count += gain
 	UIManager.update_shells(shell_count)
 	print("Player: shell count updated to " + str(shell_count))
+
+
+func _on_reload_timer_timeout() -> void:
+	is_reloading = false
+	print("Shell reloading done")

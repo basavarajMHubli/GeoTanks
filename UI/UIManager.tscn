@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://brdii2oj2mghv"]
+[gd_scene load_steps=6 format=3 uid="uid://brdii2oj2mghv"]
 
 [ext_resource type="Script" uid="uid://cjty8q3215q40" path="res://UI/UIManager.gd" id="1_yi00g"]
 [ext_resource type="Texture2D" uid="uid://cwb8sgjjrbhe" path="res://UI/tank_bullet3.png" id="2_cebxl"]
 [ext_resource type="Texture2D" uid="uid://d2ha25y4xvr6f" path="res://UI/tank_arrowFull.png" id="3_vua0w"]
 [ext_resource type="Texture2D" uid="uid://dyva1cx310f3k" path="res://UI/tank_bulletFly4.png" id="4_g5sxs"]
+[ext_resource type="Texture2D" uid="uid://cmrtm24gb374w" path="res://UI/progress-bar-circle.png" id="5_svryg"]
 
 [node name="UIManager" type="Control"]
 layout_mode = 3
@@ -41,18 +42,29 @@ offset_bottom = 75.0
 theme_override_font_sizes/font_size = 28
 text = "Objectives"
 
+[node name="ShellReloadProgressBar" type="TextureProgressBar" parent="CanvasLayer"]
+offset_left = 38.0
+offset_top = 10.0
+offset_right = 166.0
+offset_bottom = 138.0
+fill_mode = 4
+texture_under = ExtResource("5_svryg")
+texture_progress = ExtResource("5_svryg")
+tint_under = Color(0.243137, 0.243137, 0.243137, 0.647059)
+tint_progress = Color(0.719454, 2.55093e-06, 5.77569e-07, 1)
+
 [node name="ShellBackground" type="TextureRect" parent="CanvasLayer"]
-offset_left = 32.0
-offset_top = 22.0
-offset_right = 129.0
-offset_bottom = 80.0
+offset_left = 52.0
+offset_top = 43.0
+offset_right = 149.0
+offset_bottom = 101.0
 texture = ExtResource("2_cebxl")
 
 [node name="ShellsLabel" type="Label" parent="CanvasLayer"]
-offset_left = 53.0
-offset_top = 27.0
-offset_right = 103.0
-offset_bottom = 72.0
+offset_left = 73.0
+offset_top = 48.0
+offset_right = 123.0
+offset_bottom = 93.0
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 32
 text = " x"
@@ -61,16 +73,16 @@ vertical_alignment = 1
 
 [node name="AirstrikeBackground" type="Sprite2D" parent="CanvasLayer"]
 modulate = Color(0.473976, 0.473976, 0.473976, 1)
-position = Vector2(111.25, 119)
+position = Vector2(99.75, 182)
 scale = Vector2(1.66111, 2.46154)
 texture = ExtResource("4_g5sxs")
 
 [node name="AirShellsLabel" type="Label" parent="CanvasLayer"]
 modulate = Color(0.454524, 0.454524, 0.454524, 1)
-offset_left = 126.0
-offset_top = 93.0
-offset_right = 171.0
-offset_bottom = 138.0
+offset_left = 114.5
+offset_top = 156.0
+offset_right = 159.5
+offset_bottom = 201.0
 theme_override_font_sizes/font_size = 32
 text = " x"
 horizontal_alignment = 1
