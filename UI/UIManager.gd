@@ -5,6 +5,7 @@ var elapsed_delay := 0.0
 var show_reload_request := false
 var base_theme = preload("res://UI/base_theme.tres")
 
+
 @onready var obj_v_box_container = $CanvasLayer/ObjectiveVBoxContainer
 @onready var canvas_layer = $CanvasLayer
 @onready var shells_label = $CanvasLayer/ShellsLabel
