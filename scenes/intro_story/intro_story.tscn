@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://c4m6idxi4xfqw"]
+
+[ext_resource type="Script" uid="uid://cultx7ssveixh" path="res://scenes/intro_story/intro_story.gd" id="1_bwung"]
+[ext_resource type="Texture2D" uid="uid://cyp6tcukj8mva" path="res://scenes/intro_story/panel_1.png" id="1_kxyld"]
+[ext_resource type="Texture2D" uid="uid://d4akh0xs3yx3p" path="res://scenes/intro_story/panel_2.png" id="2_8nuhy"]
+[ext_resource type="Texture2D" uid="uid://c7qb3llap2fpc" path="res://scenes/intro_story/panel_3.png" id="3_gdg88"]
+[ext_resource type="Texture2D" uid="uid://c1grei5n06skk" path="res://scenes/intro_story/panel_4.png" id="4_bwung"]
+
+[node name="IntroStory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bwung")
+
+[node name="PanelTextureRect1" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 271.0
+offset_right = 527.0
+offset_bottom = 256.0
+texture = ExtResource("1_kxyld")
+
+[node name="PanelTextureRect2" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 672.0
+offset_right = 928.0
+offset_bottom = 256.0
+texture = ExtResource("2_8nuhy")
+
+[node name="PanelTextureRect3" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 271.0
+offset_top = 391.0
+offset_right = 527.0
+offset_bottom = 647.0
+texture = ExtResource("3_gdg88")
+
+[node name="PanelTextureRect4" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 672.0
+offset_top = 391.0
+offset_right = 928.0
+offset_bottom = 647.0
+texture = ExtResource("4_bwung")
+
+[node name="SkipStoryButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 994.0
+offset_top = 601.0
+offset_right = 1094.0
+offset_bottom = 632.0
+text = "Click to skip"
+
+[connection signal="button_up" from="SkipStoryButton" to="." method="_on_skip_story_button_button_up"]
