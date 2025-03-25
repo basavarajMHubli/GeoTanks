@@ -15,6 +15,8 @@ bg_color = Color(1, 0, 0, 1)
 viewport_path = NodePath("StatsSubViewport")
 
 [node name="EnemyTank" type="CharacterBody3D" groups=["enemies"]]
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_h4bce")
 
 [node name="base" type="MeshInstance3D" parent="."]
