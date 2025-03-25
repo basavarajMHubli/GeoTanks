@@ -12,6 +12,7 @@ size = Vector3(2, 1, 1)
 size = Vector3(2, 1, 1)
 
 [node name="AirstrikeBeacon" type="Area3D" groups=["health_crate"]]
+collision_mask = 7
 script = ExtResource("1_jf63r")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

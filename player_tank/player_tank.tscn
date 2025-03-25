@@ -19,6 +19,8 @@ viewport_path = NodePath("StatsSubViewport")
 size = Vector3(5, 1, 5)
 
 [node name="PlayerTank" type="CharacterBody3D"]
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_lv3pb")
 
 [node name="base" type="MeshInstance3D" parent="."]

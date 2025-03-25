@@ -17,6 +17,7 @@ mesh = SubResource("BoxMesh_aj7l6")
 skeleton = NodePath("../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0542267, 0, -0.10825)

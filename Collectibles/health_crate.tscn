@@ -13,6 +13,7 @@ size = Vector3(2, 1, 1)
 
 [node name="HealthCrate" type="Area3D" groups=["health_crate"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+collision_mask = 7
 script = ExtResource("1_jkaub")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
