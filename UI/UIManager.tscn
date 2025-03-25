@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://brdii2oj2mghv"]
+[gd_scene load_steps=7 format=3 uid="uid://brdii2oj2mghv"]
 
 [ext_resource type="Script" uid="uid://cjty8q3215q40" path="res://UI/UIManager.gd" id="1_yi00g"]
 [ext_resource type="Texture2D" uid="uid://cwb8sgjjrbhe" path="res://UI/tank_bullet3.png" id="2_cebxl"]
+[ext_resource type="Theme" uid="uid://d3x37jaeai1v2" path="res://UI/base_theme.tres" id="3_c5rlx"]
 [ext_resource type="Texture2D" uid="uid://d2ha25y4xvr6f" path="res://UI/tank_arrowFull.png" id="3_vua0w"]
 [ext_resource type="Texture2D" uid="uid://dyva1cx310f3k" path="res://UI/tank_bulletFly4.png" id="4_g5sxs"]
 [ext_resource type="Texture2D" uid="uid://cmrtm24gb374w" path="res://UI/progress-bar-circle.png" id="5_svryg"]
@@ -35,10 +36,11 @@ scale = Vector2(2.10989, 1.625)
 texture = ExtResource("3_vua0w")
 
 [node name="ObjectivesLabel" type="Label" parent="CanvasLayer"]
-offset_left = 918.0
-offset_top = 30.0
-offset_right = 1152.0
-offset_bottom = 75.0
+offset_left = 926.0
+offset_top = 42.0
+offset_right = 1160.0
+offset_bottom = 87.0
+theme = ExtResource("3_c5rlx")
 theme_override_font_sizes/font_size = 28
 text = "Objectives"
 
@@ -61,11 +63,12 @@ offset_bottom = 101.0
 texture = ExtResource("2_cebxl")
 
 [node name="ShellsLabel" type="Label" parent="CanvasLayer"]
-offset_left = 73.0
-offset_top = 48.0
-offset_right = 123.0
-offset_bottom = 93.0
+offset_left = 72.0
+offset_top = 52.0
+offset_right = 122.0
+offset_bottom = 97.0
 size_flags_horizontal = 4
+theme = ExtResource("3_c5rlx")
 theme_override_font_sizes/font_size = 32
 text = " x"
 horizontal_alignment = 1
@@ -79,10 +82,11 @@ texture = ExtResource("4_g5sxs")
 
 [node name="AirShellsLabel" type="Label" parent="CanvasLayer"]
 modulate = Color(0.454524, 0.454524, 0.454524, 1)
-offset_left = 114.5
-offset_top = 156.0
-offset_right = 159.5
-offset_bottom = 201.0
+offset_left = 109.0
+offset_top = 162.0
+offset_right = 154.0
+offset_bottom = 207.0
+theme = ExtResource("3_c5rlx")
 theme_override_font_sizes/font_size = 32
 text = " x"
 horizontal_alignment = 1

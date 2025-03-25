@@ -3,7 +3,7 @@ extends Control
 var reload_delay := 0.0
 var elapsed_delay := 0.0
 var show_reload_request := false
-
+var base_theme = preload("res://UI/base_theme.tres")
 
 @onready var obj_v_box_container = $CanvasLayer/ObjectiveVBoxContainer
 @onready var canvas_layer = $CanvasLayer
@@ -27,6 +27,7 @@ func _process(delta: float) -> void:
 func display_obj(obj_text):
 	var label = Label.new()
 	label.text = obj_text
+	label.theme = base_theme
 	obj_v_box_container.add_child(label)
 	print("UIManager: Displayed obj " + obj_text)
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://busmgvmlgcsl4"]
+[gd_scene load_steps=3 format=3 uid="uid://busmgvmlgcsl4"]
 
 [ext_resource type="Script" uid="uid://iew744fh3p2y" path="res://scene_manager/loading_screen.gd" id="1_a6qfy"]
+[ext_resource type="Theme" uid="uid://d3x37jaeai1v2" path="res://UI/base_theme.tres" id="2_rmt6l"]
 
 [node name="LoadingScreen" type="CanvasLayer"]
 script = ExtResource("1_a6qfy")
@@ -14,5 +15,6 @@ grow_vertical = 2
 
 [node name="LoadStatus" type="Label" parent="CenterContainer"]
 layout_mode = 2
+theme = ExtResource("2_rmt6l")
 theme_override_font_sizes/font_size = 64
 text = "0%"

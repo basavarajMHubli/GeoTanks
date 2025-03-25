@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://d3x37jaeai1v2"]
+
+[ext_resource type="FontFile" uid="uid://bcs10ci4xmn4v" path="res://UI/fonts/Transformers Movie font.ttf" id="1_senvt"]
+
+[resource]
+default_font = ExtResource("1_senvt")
