@@ -19,43 +19,45 @@ script = ExtResource("1_bwung")
 [node name="PanelTextureRect1" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 271.0
-offset_right = 527.0
-offset_bottom = 256.0
+offset_left = 622.0
+offset_top = 205.0
+offset_right = 878.0
+offset_bottom = 461.0
 texture = ExtResource("1_kxyld")
 
 [node name="PanelTextureRect2" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 672.0
-offset_right = 928.0
-offset_bottom = 256.0
+offset_left = 1023.0
+offset_top = 205.0
+offset_right = 1279.0
+offset_bottom = 461.0
 texture = ExtResource("2_8nuhy")
 
 [node name="PanelTextureRect3" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 271.0
-offset_top = 391.0
-offset_right = 527.0
-offset_bottom = 647.0
+offset_left = 622.0
+offset_top = 596.0
+offset_right = 878.0
+offset_bottom = 852.0
 texture = ExtResource("3_gdg88")
 
 [node name="PanelTextureRect4" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 672.0
-offset_top = 391.0
-offset_right = 928.0
-offset_bottom = 647.0
+offset_left = 1023.0
+offset_top = 596.0
+offset_right = 1279.0
+offset_bottom = 852.0
 texture = ExtResource("4_bwung")
 
 [node name="SkipStoryButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 994.0
-offset_top = 601.0
-offset_right = 1094.0
-offset_bottom = 632.0
+offset_left = 1341.0
+offset_top = 880.0
+offset_right = 1447.0
+offset_bottom = 911.0
 theme = ExtResource("6_8jxri")
 text = "Click to skip"
 
