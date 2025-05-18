@@ -33,7 +33,7 @@ shape = SubResource("BoxShape3D_5ybvh")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 visible = false
 billboard = 1
-text = "E to collect"
+text = "E to collect shell crate"
 font = ExtResource("2_vaf14")
 font_size = 128
 
