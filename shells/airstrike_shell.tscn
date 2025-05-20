@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dyjv3fyh7jepc"]
+[gd_scene load_steps=12 format=3 uid="uid://dyjv3fyh7jepc"]
 
 [ext_resource type="Script" uid="uid://xxtabvps1ltp" path="res://shells/airstrike_shell.gd" id="1_y4ph5"]
 [ext_resource type="ArrayMesh" uid="uid://dlc6rmo2xpb5y" path="res://shells/SM_Shell.obj" id="2_7kim6"]
@@ -28,10 +28,43 @@ material = SubResource("StandardMaterial3D_l1vpk")
 radial_segments = 8
 rings = 8
 
+[sub_resource type="Curve" id="Curve_y4ph5"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_qrk5f"]
+curve = SubResource("Curve_y4ph5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7kim6"]
+emission_shape = 2
+emission_sphere_radius = 1.0
+spread = 180.0
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.0
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_qrk5f")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_djmww"]
+transparency = 1
+blend_mode = 1
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.88, 0.234667, 0, 1)
+emission_enabled = true
+emission = Color(1, 0.939333, 0.09, 1)
+emission_energy_multiplier = 0.2
+
+[sub_resource type="SphereMesh" id="SphereMesh_kvcda"]
+material = SubResource("StandardMaterial3D_djmww")
+radial_segments = 8
+rings = 8
+
 [node name="AirstrikeShell" type="Node3D"]
 script = ExtResource("1_y4ph5")
 
-[node name="Shell" type="MeshInstance3D" parent="."]
+[node name="ShellMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.19249e-08, 0, 1, 0, 1, 0, -1, 0, 1.19249e-08, 0, 0, 0)
 mesh = ExtResource("2_7kim6")
 
@@ -43,7 +76,7 @@ collision_mask = 7
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.132329)
 shape = SubResource("BoxShape3D_iskop")
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+[node name="SmokeGPUParticles" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.579616)
 amount = 16
 lifetime = 3.0
@@ -51,3 +84,13 @@ speed_scale = 4.88
 randomness = 0.25
 process_material = SubResource("ParticleProcessMaterial_qc52f")
 draw_pass_1 = SubResource("SphereMesh_2pitu")
+
+[node name="BlastGPUParticles" type="GPUParticles3D" parent="."]
+visible = false
+emitting = false
+amount = 32
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_7kim6")
+draw_pass_1 = SubResource("SphereMesh_kvcda")

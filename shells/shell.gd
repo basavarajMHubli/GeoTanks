@@ -6,16 +6,17 @@ var SHELL_DAMAGE = 50
 const KILL_TIMER = 1
 var timer = 0
 var hit_someting = false
-var smoke_gpu_particles: GPUParticles3D
 var shell_mesh: MeshInstance3D
+var smoke_gpu_particles: GPUParticles3D
 
 signal camera_shake
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Area3D.connect("body_entered", self.collided)
-	smoke_gpu_particles = $SmokeGPUParticles
 	shell_mesh = $ShellMesh
+	smoke_gpu_particles = $SmokeGPUParticles
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -50,5 +51,5 @@ func destroy():
 	blast_particles.emitting = true
 
 	camera_shake.emit()
-	await get_tree().create_timer(5.0).timeout
+	await get_tree().create_timer(1.0).timeout
 	queue_free()
