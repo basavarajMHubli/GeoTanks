@@ -64,6 +64,7 @@ func fire_shell():
 		is_reloading = true
 		shell_count -= 1
 		var shell := shell_scene.instantiate()
+		shell.set_player_type()
 		shell.position = $turret/FirePoint.global_position
 		shell.rotation = $turret/FirePoint.global_rotation
 		get_parent().add_child(shell)
