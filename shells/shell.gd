@@ -53,3 +53,17 @@ func destroy():
 	camera_shake.emit()
 	await get_tree().create_timer(1.0).timeout
 	queue_free()
+
+
+func set_player_type():
+	$Area3D.set_collision_layer_value(3, true) # player layer
+	$Area3D.set_collision_mask_value(1, true) # environment mask
+	$Area3D.set_collision_mask_value(2, true) # enemy mask
+	print("Shell: type set to player")
+
+
+func set_enemy_type():
+	$Area3D.set_collision_layer_value(2, true) # enemy layer
+	$Area3D.set_collision_mask_value(1, true) # environment mask
+	$Area3D.set_collision_mask_value(3, true) # player mask
+	print("Shell: type set to enemy")

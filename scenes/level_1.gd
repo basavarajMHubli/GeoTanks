@@ -70,8 +70,8 @@ func _on_objective_check_timer_timeout():
 						obj["status"] = ObjectiveStatus.done
 						obj_remaining -= 1
 				2:
-					var enemies: Array = get_tree().get_nodes_in_group("enemies")
-					if enemies.size() == 0:
+					var current_enemies: Array = get_tree().get_nodes_in_group("enemies")
+					if current_enemies.size() == 0:
 						UIManager.remove_obj(obj["name"])
 						obj["status"] = ObjectiveStatus.done
 						obj_remaining -= 1
