@@ -155,7 +155,7 @@ transform = Transform3D(0.47802, 0, -0.878344, 0, 1, 0, 0.878344, 0, 0.47802, -6
 rotation_mode = 1
 
 [node name="ExtractionTimer" type="Timer" parent="."]
-wait_time = 32.0
+wait_time = 100.0
 one_shot = true
 autostart = true
 

@@ -65,6 +65,9 @@ move_speed = 50
 [node name="EnemyTank" parent="." instance=ExtResource("3_g4lg8")]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 5, 2, -17)
 
+[node name="EnemyTank2" parent="." instance=ExtResource("3_g4lg8")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 29, 2, -51)
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.989822, 0.137964, -0.0348941, 0.137424, 0.990359, 0.0174524, 0.0369655, 0.0124795, -0.999239, 14.5402, 6.39808, 0)
 light_color = Color(0.972549, 0.662745, 0.313726, 1)
