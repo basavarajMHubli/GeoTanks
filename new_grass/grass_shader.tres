@@ -1,12 +1,12 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dwnyebyd3sqrf"]
 
-[ext_resource type="Shader" uid="uid://dy82ferl2cgr2" path="res://new_grass/grass_shader.gdshader" id="1_brbip"]
+[ext_resource type="Shader" uid="uid://dy82ferl2cgr2" path="res://new_grass/grass_shader.gdshader" id="1_pitra"]
 
 [resource]
 render_priority = 0
-shader = ExtResource("1_brbip")
-shader_parameter/blade_height = 0.5
-shader_parameter/blade_width = 0.005
+shader = ExtResource("1_pitra")
+shader_parameter/blade_height = 2.0
+shader_parameter/blade_width = 0.05
 shader_parameter/density = 0.015
 shader_parameter/base_color = Color(0.239216, 0.345098, 0.105882, 1)
 shader_parameter/tip_color = Color(0.16545, 0.24475, 0.0656213, 1)

@@ -39,6 +39,9 @@ void vertex() {
 }
 
 void fragment() {
+	if (height_ratio == 0.0)  {
+		discard;
+	}
+	
 	ALBEDO = mix(base_color, tip_color, height_ratio);
 }
-
