@@ -33,6 +33,8 @@ var enemies : Array[Node]
 @onready var shell_crate = $NavigationRegion3D/ShellCrate
 @onready var health_crate = $NavigationRegion3D/HealthCrate
 @onready var objective_check_timer = $ObjectiveCheckTimer
+# TODO: Find better way for jet audio
+@onready var jet_audio: AudioStreamPlayer3D = $JetAudio
 
 func _ready():
 	UIManager.ui_visibility(true)
@@ -80,6 +82,7 @@ func _on_objective_check_timer_timeout():
 
 
 func _on_player_tank_airstrike() -> void:
+	jet_audio.play()
 	for enemy in enemies:
 		var shell := shell_scene.instantiate()
 		shell.position = player_tank.global_position

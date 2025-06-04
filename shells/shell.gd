@@ -8,6 +8,8 @@ var timer = 0
 var hit_someting = false
 var shell_mesh: MeshInstance3D
 var smoke_gpu_particles: GPUParticles3D
+var explosion: AudioStreamPlayer3D
+
 
 signal camera_shake
 
@@ -16,7 +18,7 @@ func _ready():
 	$Area3D.connect("body_entered", self.collided)
 	shell_mesh = $ShellMesh
 	smoke_gpu_particles = $SmokeGPUParticles
-
+	explosion = $ExplosionAudio
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -50,8 +52,11 @@ func destroy():
 	blast_particles.visible = true
 	blast_particles.emitting = true
 
+	# Play explosion sound
+	explosion.play()
+
 	camera_shake.emit()
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(2.0).timeout
 	queue_free()
 
 

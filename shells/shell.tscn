@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://dvkulc8muxc07"]
+[gd_scene load_steps=13 format=3 uid="uid://dvkulc8muxc07"]
 
 [ext_resource type="Script" uid="uid://opipfj3qw0ns" path="res://shells/shell.gd" id="1_n3tug"]
 [ext_resource type="ArrayMesh" uid="uid://dlc6rmo2xpb5y" path="res://shells/SM_Shell.obj" id="2_wnqlb"]
+[ext_resource type="AudioStream" uid="uid://c0qtkv1nqmmt8" path="res://shells/shell-explosion.mp3" id="3_qrk5f"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iskop"]
 size = Vector3(0.2, 0.2, 0.6)
@@ -93,3 +94,7 @@ one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_qrk5f")
 draw_pass_1 = SubResource("SphereMesh_whcxh")
+
+[node name="ExplosionAudio" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_qrk5f")
+unit_size = 100.0
