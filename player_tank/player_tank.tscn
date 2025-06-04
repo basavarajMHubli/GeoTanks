@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://buukchwddsq16"]
+[gd_scene load_steps=12 format=3 uid="uid://buukchwddsq16"]
 
 [ext_resource type="Script" uid="uid://d3eeatxmf3hie" path="res://player_tank/player_tank.gd" id="1_lv3pb"]
 [ext_resource type="ArrayMesh" uid="uid://b58buti8cprjb" path="res://player_tank/SM_PlayerTurret.obj" id="2_simda"]
 [ext_resource type="Material" uid="uid://efslj53ftobf" path="res://player_tank/player_tank.tres" id="2_vgbyp"]
 [ext_resource type="ArrayMesh" uid="uid://dpc2f1xq5gwau" path="res://player_tank/SM_PlayerBase.obj" id="3_wcxlb"]
 [ext_resource type="Script" uid="uid://cl3abrl7bl7mq" path="res://player_tank/camera_3d.gd" id="5_fxw7l"]
+[ext_resource type="AudioStream" uid="uid://dhjr8fldad8en" path="res://player_tank/shell-fire.mp3" id="6_nb40t"]
+[ext_resource type="AudioStream" uid="uid://dvbtj6osg3epi" path="res://player_tank/empty-fire.mp3" id="7_ow8vm"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_itc2q"]
 radius = 1.2568
@@ -84,6 +86,14 @@ shape = SubResource("BoxShape3D_hr6kr")
 
 [node name="ReloadTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="ShellFireAudio" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_nb40t")
+unit_size = 100.0
+
+[node name="EmptyFireAudio" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_ow8vm")
+unit_size = 100.0
 
 [connection signal="timeout" from="SpringArm3D/Camera3D/shake_timer" to="SpringArm3D/Camera3D" method="_on_shake_timer_timeout"]
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]

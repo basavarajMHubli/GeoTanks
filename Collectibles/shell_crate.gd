@@ -5,6 +5,8 @@ extends Area3D
 var player_interactor: Node3D = null
 
 @onready var help_text = $HelpText
+@onready var pickup_audio: AudioStreamPlayer3D = $PickupAudio
+@onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
 
 func _on_body_entered(body):
 	if body.is_in_group("player"):
@@ -27,4 +29,10 @@ func _input(event):
 
 func destroy_shell_crate():
 	print("ShellCrate: Freeing")
+	visible = false
+	collision_shape_3d.disabled = true
+
+	pickup_audio.play()
+
+	await get_tree().create_timer(0.5).timeout
 	queue_free()

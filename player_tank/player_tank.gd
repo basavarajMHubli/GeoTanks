@@ -17,6 +17,8 @@ signal airstrike
 
 @onready var health_bar = $StatsSubViewport/HealthBar
 @onready var reload_timer: Timer = $ReloadTimer
+@onready var shell_fire_audio: AudioStreamPlayer3D = $ShellFireAudio
+@onready var empty_fire_audio: AudioStreamPlayer3D = $EmptyFireAudio
 
 
 func _ready():
@@ -60,7 +62,9 @@ func _process(_delta: float):
 
 
 func fire_shell():
-	if shell_count and not is_reloading:
+	if shell_count == 0:
+		empty_fire_audio.play()
+	elif not is_reloading:
 		is_reloading = true
 		shell_count -= 1
 		var shell := shell_scene.instantiate()
@@ -68,6 +72,7 @@ func fire_shell():
 		shell.position = $turret/FirePoint.global_position
 		shell.rotation = $turret/FirePoint.global_rotation
 		get_parent().add_child(shell)
+		shell_fire_audio.play()
 		UIManager.update_shells(shell_count)
 		shell.connect("camera_shake", $SpringArm3D/Camera3D._on_player_tank_camera_shake)
 		reload_timer.start(reload_time)

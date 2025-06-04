@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://btfefnsfi8rmt"]
+[gd_scene load_steps=7 format=3 uid="uid://btfefnsfi8rmt"]
 
 [ext_resource type="Script" uid="uid://cm78utmlhv6j8" path="res://Collectibles/airstrike_beacon.gd" id="1_jf63r"]
 [ext_resource type="FontFile" uid="uid://bcs10ci4xmn4v" path="res://UI/fonts/Transformers Movie font.ttf" id="2_ad22u"]
+[ext_resource type="AudioStream" uid="uid://70qi4qh4tahl" path="res://Collectibles/beacon-pickup.mp3" id="3_jnken"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3b2r7"]
 size = Vector3(3, 1, 3)
@@ -35,6 +36,11 @@ billboard = 1
 text = "E to collect beacon"
 font = ExtResource("2_ad22u")
 font_size = 128
+
+[node name="PickupAudio" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_jnken")
+volume_db = 30.0
+unit_size = 100.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

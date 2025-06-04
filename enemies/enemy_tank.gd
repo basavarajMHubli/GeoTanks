@@ -10,6 +10,7 @@ var shell_scene = preload("res://shells/shell.tscn")
 
 @onready var nav_agent = $NavigationAgent3D
 @onready var health_bar = $StatsSubViewport/ProgressBar
+@onready var shell_fire_audio: AudioStreamPlayer3D = $ShellFireAudio
 
 func _ready():
 	# Initialize timer for firing shell
@@ -56,6 +57,7 @@ func _on_fire_timer_timeout():
 	shell.set_enemy_type()
 	shell.position = $turret/FirePoint.global_position
 	shell.rotation = $turret/FirePoint.global_rotation
+	shell_fire_audio.play()
 	get_parent().add_child(shell)
 
 

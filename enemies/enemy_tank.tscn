@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bi00ua5nemag2"]
+[gd_scene load_steps=10 format=3 uid="uid://bi00ua5nemag2"]
 
 [ext_resource type="Script" uid="uid://d3h3eu5ms3h1o" path="res://enemies/enemy_tank.gd" id="1_h4bce"]
 [ext_resource type="Material" uid="uid://bjwcrwq8e01pp" path="res://enemies/M_EnemyTank.tres" id="2_48gq8"]
 [ext_resource type="ArrayMesh" uid="uid://cskfsd56xm5dj" path="res://enemies/SM_EnemyBase.obj" id="3_2iten"]
 [ext_resource type="ArrayMesh" uid="uid://ciwgo0u0nbe2f" path="res://enemies/SM_EnemyTurret.obj" id="5_3mqte"]
 [ext_resource type="PackedScene" uid="uid://b81dhlbwmgarg" path="res://UI/offscreen_indicator.tscn" id="5_gico2"]
+[ext_resource type="AudioStream" uid="uid://dtbfw24atysoe" path="res://enemies/shell-fire.mp3" id="6_idwm0"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_bvd31"]
 
@@ -66,5 +67,9 @@ billboard = 1
 texture = SubResource("ViewportTexture_0axxc")
 
 [node name="OffscreenIndicator" parent="." instance=ExtResource("5_gico2")]
+
+[node name="ShellFireAudio" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_idwm0")
+unit_size = 100.0
 
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
