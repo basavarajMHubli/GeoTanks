@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cagy7a4ww8b8m"]
+
+[ext_resource type="Script" uid="uid://c8fqnp08ouj1a" path="res://shells/airstrike_manager.gd" id="1_wkvbw"]
+[ext_resource type="AudioStream" uid="uid://jcov3rf0nar" path="res://shells/airstrike-jet.mp3" id="2_e2f15"]
+
+[node name="AirstrikeManager" type="Node3D"]
+script = ExtResource("1_wkvbw")
+
+[node name="JetAudio" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_e2f15")
+volume_db = 50.0
+unit_size = 100.0
+
+[node name="ReloadTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]

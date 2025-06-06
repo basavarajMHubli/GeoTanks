@@ -9,23 +9,23 @@ extends CharacterBody3D
 @export var reload_time := 1.0
 
 var target_velocity := Vector3.ZERO
-var airstrike_call_count = 0
 var is_reloading := false
 var shell_scene := preload("res://shells/shell.tscn")
 const RAY_LENGTH := 2000
-signal airstrike
+signal airstrike_requested
+signal airstrike_ammo(ammo)
 
 @onready var health_bar = $StatsSubViewport/HealthBar
 @onready var reload_timer: Timer = $ReloadTimer
 @onready var shell_fire_audio: AudioStreamPlayer3D = $ShellFireAudio
 @onready var empty_fire_audio: AudioStreamPlayer3D = $EmptyFireAudio
 
-
 func _ready():
 	# Init health
 	cur_health = max_health
 	health_bar.value = cur_health
 	UIManager.update_shells(shell_count)
+
 
 func _physics_process(delta: float):
 	var direction := Vector3.ZERO
@@ -83,17 +83,11 @@ func fire_shell():
 
 func enable_airstrike(call_count):
 	print("Player: Enabling airstrike, count " + str(call_count))
-	airstrike_call_count = call_count
-	UIManager.update_airstrike_count(call_count)
+	emit_signal("airstrike_ammo", call_count)
 
 
 func call_airstrike():
-	if airstrike_call_count == 0:
-		print("Player: Airstrike call count 0")
-		return
-
-	airstrike_call_count -= 1
-	emit_signal("airstrike")
+	emit_signal("airstrike_requested")
 
 
 func rotate_turret():
