@@ -27,7 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://btfefnsfi8rmt" path="res://Collectibles/airstrike_beacon.tscn" id="23_mmfjm"]
 [ext_resource type="PackedScene" uid="uid://c47qxhx15xau3" path="res://environment/hospital_tents/hospital_tent1.tscn" id="25_nqkkt"]
 [ext_resource type="PackedScene" uid="uid://co7bkm37hjnrg" path="res://environment/hospital_tents/hospital_tent2.tscn" id="26_16r71"]
-[ext_resource type="AudioStream" uid="uid://jcov3rf0nar" path="res://shells/airstrike-jet.mp3" id="28_k8ld0"]
+[ext_resource type="PackedScene" uid="uid://cagy7a4ww8b8m" path="res://shells/airstrike_manager.tscn" id="29_mbb35"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b4fk2"]
 sky_top_color = Color(0.352941, 0.745098, 0.964706, 1)
@@ -59,7 +59,7 @@ script = ExtResource("1_6vy8p")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_kury7")
 
-[node name="PlayerTank" parent="." groups=["player"] instance=ExtResource("2_eqnba")]
+[node name="PlayerTank" parent="." instance=ExtResource("2_eqnba")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.3849, 1.68043, 1.1244)
 move_speed = 50
 
@@ -1045,6 +1045,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, 68)
 
 [node name="AirstrikeBeacon" parent="NavigationRegion3D" instance=ExtResource("23_mmfjm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 1, -11)
+call_count = 10
 
 [node name="ObjectiveCheckTimer" type="Timer" parent="."]
 autostart = true
@@ -1093,10 +1094,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85, 0, -26)
 [node name="GrassMultimesh2" parent="grasses" instance=ExtResource("18_1nq52")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75, 0, 77)
 
-[node name="JetAudio" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("28_k8ld0")
-volume_db = 50.0
-unit_size = 100.0
+[node name="AirstrikeManager" parent="." instance=ExtResource("29_mbb35")]
 
-[connection signal="airstrike" from="PlayerTank" to="." method="_on_player_tank_airstrike"]
+[connection signal="airstrike_ammo" from="PlayerTank" to="AirstrikeManager" method="_on_player_tank_airstrike_ammo"]
+[connection signal="airstrike_requested" from="PlayerTank" to="AirstrikeManager" method="_on_airstrike_request"]
 [connection signal="timeout" from="ObjectiveCheckTimer" to="." method="_on_objective_check_timer_timeout"]

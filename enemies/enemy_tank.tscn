@@ -39,7 +39,6 @@ shape = SubResource("SphereShape3D_bvd31")
 target_desired_distance = 10.0
 path_max_distance = 10.01
 avoidance_enabled = true
-debug_enabled = true
 
 [node name="StatsSubViewport" type="SubViewport" parent="."]
 transparent_bg = true

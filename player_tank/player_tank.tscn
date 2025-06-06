@@ -20,7 +20,7 @@ viewport_path = NodePath("StatsSubViewport")
 [sub_resource type="BoxShape3D" id="BoxShape3D_hr6kr"]
 size = Vector3(5, 1, 5)
 
-[node name="PlayerTank" type="CharacterBody3D"]
+[node name="PlayerTank" type="CharacterBody3D" groups=["player"]]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_lv3pb")
