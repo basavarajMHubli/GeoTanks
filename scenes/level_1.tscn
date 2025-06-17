@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://ckij8dukvmh82"]
+[gd_scene load_steps=34 format=3 uid="uid://ckij8dukvmh82"]
 
 [ext_resource type="Script" uid="uid://bku6ad5hwjyda" path="res://scenes/level_1.gd" id="1_6vy8p"]
 [ext_resource type="PackedScene" uid="uid://buukchwddsq16" path="res://player_tank/player_tank.tscn" id="2_eqnba"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://btfefnsfi8rmt" path="res://Collectibles/airstrike_beacon.tscn" id="23_mmfjm"]
 [ext_resource type="PackedScene" uid="uid://c47qxhx15xau3" path="res://environment/hospital_tents/hospital_tent1.tscn" id="25_nqkkt"]
 [ext_resource type="PackedScene" uid="uid://co7bkm37hjnrg" path="res://environment/hospital_tents/hospital_tent2.tscn" id="26_16r71"]
+[ext_resource type="AudioStream" uid="uid://bkw3vlnign7go" path="res://background_score/level-1.mp3" id="29_iw4em"]
 [ext_resource type="PackedScene" uid="uid://cagy7a4ww8b8m" path="res://shells/airstrike_manager.tscn" id="29_mbb35"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b4fk2"]
@@ -1095,6 +1096,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85, 0, -26)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75, 0, 77)
 
 [node name="AirstrikeManager" parent="." instance=ExtResource("29_mbb35")]
+
+[node name="BackgroundAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("29_iw4em")
+volume_db = 5.0
+autoplay = true
+parameters/looping = false
 
 [connection signal="airstrike_ammo" from="PlayerTank" to="AirstrikeManager" method="_on_player_tank_airstrike_ammo"]
 [connection signal="airstrike_requested" from="PlayerTank" to="AirstrikeManager" method="_on_airstrike_request"]
