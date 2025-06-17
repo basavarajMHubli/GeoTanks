@@ -52,6 +52,12 @@ func destroy():
 	blast_particles.visible = true
 	blast_particles.emitting = true
 
+	# Show blast particles
+	var debris_particles : GPUParticles3D = $DebrisGPUParticles
+	debris_particles.global_transform = global_transform
+	debris_particles.visible = true
+	debris_particles.emitting = true
+
 	# Play explosion sound
 	explosion.play()
 
