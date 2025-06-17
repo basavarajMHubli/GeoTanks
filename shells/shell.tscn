@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dvkulc8muxc07"]
+[gd_scene load_steps=18 format=3 uid="uid://dvkulc8muxc07"]
 
 [ext_resource type="Script" uid="uid://opipfj3qw0ns" path="res://shells/shell.gd" id="1_n3tug"]
 [ext_resource type="ArrayMesh" uid="uid://dlc6rmo2xpb5y" path="res://shells/SM_Shell.obj" id="2_wnqlb"]
@@ -38,9 +38,9 @@ curve = SubResource("Curve_ebc1l")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qrk5f"]
 emission_shape = 2
 emission_sphere_radius = 1.0
-spread = 180.0
-initial_velocity_min = 1.0
-initial_velocity_max = 2.0
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
 gravity = Vector3(0, 0, 0)
 scale_min = 0.0
 scale_max = 5.0
@@ -60,6 +60,30 @@ emission_energy_multiplier = 0.2
 material = SubResource("StandardMaterial3D_djmww")
 radial_segments = 8
 rings = 8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_whcxh"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+diffuse_mode = 3
+albedo_color = Color(0.64, 0.420907, 0.1344, 1)
+
+[sub_resource type="Curve" id="Curve_qrk5f"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.995671, 0.0337079), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_djmww"]
+curve = SubResource("Curve_qrk5f")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_i6xol"]
+direction = Vector3(0, 1, 0)
+spread = 90.0
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+scale_curve = SubResource("CurveTexture_djmww")
+
+[sub_resource type="SphereMesh" id="SphereMesh_qrk5f"]
 
 [node name="Shell" type="Node3D"]
 script = ExtResource("1_n3tug")
@@ -98,3 +122,13 @@ draw_pass_1 = SubResource("SphereMesh_whcxh")
 [node name="ExplosionAudio" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_qrk5f")
 unit_size = 100.0
+
+[node name="DebrisGPUParticles" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -9)
+material_override = SubResource("StandardMaterial3D_whcxh")
+emitting = false
+amount = 16
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_i6xol")
+draw_pass_1 = SubResource("SphereMesh_qrk5f")
