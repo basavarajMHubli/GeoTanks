@@ -43,6 +43,7 @@ background_mode = 2
 sky = SubResource("Sky_qs7hy")
 tonemap_mode = 2
 glow_enabled = true
+glow_bloom = 0.2
 fog_enabled = true
 fog_light_color = Color(0.517647, 0.552941, 0.607843, 1)
 fog_sun_scatter = 0.05
