@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://buukchwddsq16" path="res://player_tank/player_tank.tscn" id="2_eqnba"]
 [ext_resource type="PackedScene" uid="uid://bi00ua5nemag2" path="res://enemies/enemy_tank.tscn" id="3_g4lg8"]
 [ext_resource type="PackedScene" uid="uid://blw5vnr06xmb7" path="res://environment/tent_long_1/tent_long_1.tscn" id="5_3kb3v"]
-[ext_resource type="PackedScene" uid="uid://2ikvy6rs6ql4" path="res://Collectibles/health_crate.tscn" id="5_jojc4"]
+[ext_resource type="PackedScene" uid="uid://2ikvy6rs6ql4" path="res://Collectibles/health_crate/health_crate.tscn" id="5_jojc4"]
 [ext_resource type="PackedScene" uid="uid://copk8kj3vfvb5" path="res://Collectibles/shell_crate.tscn" id="6_a4pc4"]
 [ext_resource type="PackedScene" uid="uid://bn2rxskbyo83p" path="res://environment/ground/ground.tscn" id="6_bk4pl"]
 [ext_resource type="PackedScene" uid="uid://bebbkhijp54nb" path="res://environment/tent_long_2/tent_long_2.tscn" id="6_e30r0"]
@@ -1100,7 +1100,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75, 0, 77)
 
 [node name="BackgroundAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("29_iw4em")
-volume_db = 5.0
+volume_db = 2.0
 autoplay = true
 parameters/looping = false
 
