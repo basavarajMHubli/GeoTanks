@@ -5,7 +5,7 @@ var SHELL_DAMAGE = 50
 
 const KILL_TIMER = 1
 var timer = 0
-var hit_someting = false
+var hit_something = false
 var shell_mesh: MeshInstance3D
 var smoke_gpu_particles: GPUParticles3D
 var explosion: AudioStreamPlayer3D
@@ -32,15 +32,19 @@ func _physics_process(delta):
 
 func collided(body):
 	print("Shell: collided with " + body.name)
-	if hit_someting == false:
+	if hit_something == false:
 		if body.has_method("shell_hit"):
 			body.shell_hit(SHELL_DAMAGE, global_transform)
-
-	hit_someting = true
-	destroy()
+		destroy()
+	
+	hit_something = true
 
 
 func destroy():
+	# Disable monitoring and monitorable
+	$Area3D.monitoring = false
+	$Area3D.monitorable = false
+	
 	# Hide and disable shell
 	smoke_gpu_particles.visible = false
 	shell_mesh.visible = false
