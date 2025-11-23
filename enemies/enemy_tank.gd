@@ -7,6 +7,7 @@ extends CharacterBody3D
 
 var fire_timer = Timer.new()
 var shell_scene = preload("res://shells/shell.tscn")
+var fractured_model:PackedScene = preload("res://enemies/enemy_tank_fractured.tscn")
 
 @onready var nav_agent = $NavigationAgent3D
 @onready var health_bar = $StatsSubViewport/ProgressBar
@@ -67,5 +68,13 @@ func shell_hit(damage_value, hit_point):
 	cur_health -= damage_value
 	health_bar.value = cur_health
 	if cur_health <= 0:
-		printt("queue_free", self)
-		queue_free()
+		destroy()
+
+
+func destroy():
+	var fractured_model_obj:Node3D = fractured_model.instantiate()
+	get_parent().add_child(fractured_model_obj)
+	fractured_model_obj.transform = self.transform
+	
+	printt("queue_free", self)
+	self.queue_free()
