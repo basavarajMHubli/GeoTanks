@@ -1,8 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b81dhlbwmgarg"]
 
 [ext_resource type="Script" uid="uid://d3po6s7t0ao47" path="res://UI/offscreen_indicator.gd" id="1_nakxc"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_r3jgr"]
+[ext_resource type="Texture2D" uid="uid://btom81o06ry3k" path="res://UI/exclamation.png" id="2_8xu15"]
 
 [node name="OffscreenIndicator" type="Node3D"]
 script = ExtResource("1_nakxc")
@@ -22,4 +21,4 @@ grow_vertical = 2
 pivot_offset = Vector2(20, 20)
 size_flags_horizontal = 0
 size_flags_vertical = 4
-texture = SubResource("PlaceholderTexture2D_r3jgr")
+texture = ExtResource("2_8xu15")
