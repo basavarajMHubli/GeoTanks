@@ -15,7 +15,7 @@ var obj_remaining := objectives.size()
 var is_extraction_timer_expired
 
 @export var enemy: PackedScene = preload("res://enemies/enemy_tank.tscn")
-@export var health_crate: PackedScene = preload("res://Collectibles/health_crate.tscn")
+@export var health_crate: PackedScene = preload("res://Collectibles/health_crate/health_crate.tscn")
 @export var shell_crate: PackedScene = preload("res://Collectibles/shell_crate.tscn")
 @onready var player_tank = $PlayerTank
 @onready var extraction_timer_label: Label = $CanvasLayer/ExtractionTimerLabel

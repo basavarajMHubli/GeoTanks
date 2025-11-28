@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bbeb3ochdubq4" path="res://scenes/level_3.gd" id="1_awbue"]
 [ext_resource type="PackedScene" uid="uid://buukchwddsq16" path="res://player_tank/player_tank.tscn" id="2_jvhss"]
 [ext_resource type="Material" uid="uid://ck5yy6bnnfhoe" path="res://environment/ground/test_ground.tres" id="4_3gpbg"]
-[ext_resource type="PackedScene" uid="uid://2ikvy6rs6ql4" path="res://Collectibles/health_crate.tscn" id="5_nvv82"]
+[ext_resource type="PackedScene" uid="uid://2ikvy6rs6ql4" path="res://Collectibles/health_crate/health_crate.tscn" id="5_nvv82"]
 [ext_resource type="PackedScene" uid="uid://copk8kj3vfvb5" path="res://Collectibles/shell_crate.tscn" id="6_ad2oa"]
 [ext_resource type="PackedScene" uid="uid://cx8myedc6brit" path="res://pause_menu/PauseMenu.tscn" id="7_1uvfy"]
 
@@ -49,7 +49,7 @@ script = ExtResource("1_awbue")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_kury7")
 
-[node name="PlayerTank" parent="." groups=["player"] instance=ExtResource("2_jvhss")]
+[node name="PlayerTank" parent="." instance=ExtResource("2_jvhss")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.38488, 1.68043, 1.1244)
 move_speed = 32
 turn_speed = 4
@@ -143,7 +143,7 @@ visible = false
 curve = SubResource("Curve3D_xuqpc")
 
 [node name="SpawnPathLocation" type="PathFollow3D" parent="EnemySpawnPath"]
-transform = Transform3D(0.47802, 0, -0.878344, 0, 1, 0, 0.878344, 0, 0.47802, -60.0748, 0, -53.793)
+transform = Transform3D(0.47802022, 0, -0.8783439, 0, 1, 0, 0.8783439, 0, 0.47802022, -60.0748, 0, -53.793)
 rotation_mode = 1
 
 [node name="CollectibleSpawnPath" type="Path3D" parent="."]
@@ -151,7 +151,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
 curve = SubResource("Curve3D_xuqpc")
 
 [node name="SpawnPathLocation" type="PathFollow3D" parent="CollectibleSpawnPath"]
-transform = Transform3D(0.47802, 0, -0.878344, 0, 1, 0, 0.878344, 0, 0.47802, -60.0748, 0, -53.793)
+transform = Transform3D(0.47802022, 0, -0.8783439, 0, 1, 0, 0.8783439, 0, 0.47802022, -60.0748, 0, -53.793)
 rotation_mode = 1
 
 [node name="ExtractionTimer" type="Timer" parent="."]
