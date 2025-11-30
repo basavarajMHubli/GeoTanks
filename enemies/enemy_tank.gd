@@ -60,6 +60,7 @@ func _on_fire_timer_timeout():
 	shell.rotation = $turret/FirePoint.global_rotation
 	shell_fire_audio.play()
 	get_parent().add_child(shell)
+	fire_timer.wait_time = randf_range(fire_delay, fire_delay + 3)
 
 
 func shell_hit(damage_value, hit_point):
