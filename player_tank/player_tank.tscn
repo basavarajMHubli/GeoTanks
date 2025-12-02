@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://buukchwddsq16"]
+[gd_scene load_steps=15 format=3 uid="uid://buukchwddsq16"]
 
 [ext_resource type="Script" uid="uid://d3eeatxmf3hie" path="res://player_tank/player_tank.gd" id="1_lv3pb"]
 [ext_resource type="ArrayMesh" uid="uid://b58buti8cprjb" path="res://player_tank/SM_PlayerTurret.obj" id="2_simda"]
@@ -19,6 +19,43 @@ viewport_path = NodePath("StatsSubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hr6kr"]
 size = Vector3(5, 1, 5)
+
+[sub_resource type="Animation" id="Animation_ow8vm"]
+resource_name = "recoil"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("turret:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.5), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_syiw7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("turret:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dccjc"]
+_data = {
+&"RESET": SubResource("Animation_syiw7"),
+&"recoil": SubResource("Animation_ow8vm")
+}
 
 [node name="PlayerTank" type="CharacterBody3D" groups=["player"]]
 collision_layer = 4
@@ -94,6 +131,11 @@ unit_size = 100.0
 [node name="EmptyFireAudio" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("7_ow8vm")
 unit_size = 100.0
+
+[node name="RecoilAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_dccjc")
+}
 
 [connection signal="timeout" from="SpringArm3D/Camera3D/shake_timer" to="SpringArm3D/Camera3D" method="_on_shake_timer_timeout"]
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]

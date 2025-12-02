@@ -12,6 +12,7 @@ var fractured_model:PackedScene = preload("res://enemies/enemy_tank_fractured.ts
 @onready var nav_agent = $NavigationAgent3D
 @onready var health_bar = $StatsSubViewport/ProgressBar
 @onready var shell_fire_audio: AudioStreamPlayer3D = $ShellFireAudio
+@onready var recoil_animation_player: AnimationPlayer = $RecoilAnimationPlayer
 
 func _ready():
 	# Initialize timer for firing shell
@@ -54,6 +55,8 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity):
 
 func _on_fire_timer_timeout():
 	print("Enemy: firing")
+	recoil_animation_player.play("recoil")
+
 	var shell := shell_scene.instantiate()
 	shell.set_enemy_type()
 	shell.position = $turret/FirePoint.global_position
