@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bi00ua5nemag2"]
+[gd_scene load_steps=13 format=3 uid="uid://bi00ua5nemag2"]
 
 [ext_resource type="Script" uid="uid://d3h3eu5ms3h1o" path="res://enemies/enemy_tank.gd" id="1_h4bce"]
 [ext_resource type="Material" uid="uid://bjwcrwq8e01pp" path="res://enemies/M_EnemyTank.tres" id="2_48gq8"]
@@ -14,6 +14,43 @@ bg_color = Color(1, 0, 0, 1)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_0axxc"]
 viewport_path = NodePath("StatsSubViewport")
+
+[sub_resource type="Animation" id="Animation_ow8vm"]
+resource_name = "recoil"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("turret:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.5), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_syiw7"]
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("turret:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.050207794, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.5), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dccjc"]
+_data = {
+&"RESET": SubResource("Animation_syiw7"),
+&"recoil": SubResource("Animation_ow8vm")
+}
 
 [node name="EnemyTank" type="CharacterBody3D" groups=["enemies"]]
 collision_layer = 2
@@ -70,5 +107,10 @@ texture = SubResource("ViewportTexture_0axxc")
 [node name="ShellFireAudio" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("6_idwm0")
 unit_size = 100.0
+
+[node name="RecoilAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_dccjc")
+}
 
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]

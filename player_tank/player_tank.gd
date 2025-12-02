@@ -19,6 +19,7 @@ signal airstrike_ammo(ammo)
 @onready var reload_timer: Timer = $ReloadTimer
 @onready var shell_fire_audio: AudioStreamPlayer3D = $ShellFireAudio
 @onready var empty_fire_audio: AudioStreamPlayer3D = $EmptyFireAudio
+@onready var recoil_animation_player: AnimationPlayer = $RecoilAnimationPlayer
 
 func _ready():
 	# Init health
@@ -65,6 +66,7 @@ func fire_shell():
 	if shell_count == 0:
 		empty_fire_audio.play()
 	elif not is_reloading:
+		recoil_animation_player.play("recoil")
 		is_reloading = true
 		shell_count -= 1
 		var shell := shell_scene.instantiate()
