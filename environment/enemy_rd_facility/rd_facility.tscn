@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2tge1c5uaij7"]
+
+[ext_resource type="PackedScene" uid="uid://ym2y5dne2a4q" path="res://environment/enemy_rd_facility/SM_Enemy_RD_Facility.glb" id="1_aajfp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i8f8d"]
+size = Vector3(17.6, 5, 8)
+
+[node name="RD_Facility" type="StaticBody3D"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="SM_Enemy_RD_Facility" parent="." instance=ExtResource("1_aajfp")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+shape = SubResource("BoxShape3D_i8f8d")
